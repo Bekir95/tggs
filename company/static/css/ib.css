@@ -1,0 +1,23 @@
+.ib-wrapper { 
+    padding: 150px 10%;
+   
+}
+
+.ib-l-wrapper{
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.ib-title { 
+    font-family: 'Poppins' , sans-serif;
+}
+
+.ib-m-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}

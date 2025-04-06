@@ -1,0 +1,65 @@
+:root {
+    --logo-color:#084687;
+}
+#ftr { 
+    padding: 100px 10%;
+    background-color: var(--logo-color);
+
+}
+
+.footer-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.footer-left { 
+    flex: 30%;
+    justify-content: center;
+}
+
+.footer-left img{
+    width: 300px;
+    display: block;
+    padding-bottom: 20px;
+}
+.lftr-text { 
+    font-family: 'Rubik' , sans-serif;
+    font-size: 16px;
+    font-weight: 300;
+    display: block;
+}
+
+.footer-right { 
+    flex: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.footer-list{
+    list-style-type: none;
+    text-align: start;
+    padding-left: 300px;    
+}
+    
+
+.footer-list-title{
+    font-family: 'Rubik' , sans-serif;
+    font-size: 30px;
+    padding-bottom: 10px;
+    }
+.footer-list-element a{
+    color: white;
+    text-decoration: none;
+    font-family: 'Rubik' , sans-serif;
+    font-size: 16px;
+    padding: 5px 0px;
+    transition: .2s linear;
+}
+.footer-list-element a:hover { 
+    color: black;
+    cursor: pointer;
+}

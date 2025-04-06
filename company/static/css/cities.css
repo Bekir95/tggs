@@ -1,0 +1,39 @@
+#cities { 
+    
+    margin-top: -150px; } 
+
+.nav-link { 
+    color: black!important;
+}
+.plaka-kodu { 
+    font-size: 60px;
+    font-family:'Poppins' , sans-serif;
+    
+
+}
+.wrapper { 
+    background: #a65f18;
+    transition: 0.3s;
+}
+.wrapper:hover{ 
+    background: black;
+}
+.wrapper:hover .plaka-kodu { 
+    animation: deneme 0.5s ease-in-out;
+
+}
+@keyframes deneme {
+    0% , 100% { 
+        font-size: 60px;       
+    }
+    50% { 
+        font-size: 80px;         
+    }
+}
+
+.city-name { 
+    font-size: 16px;
+    font-family: 'Poppins' , sans-serif;
+    font-weight: bold;
+    margin-top: 5px;
+}

@@ -1,0 +1,113 @@
+body,html { 
+    background: url('../img/genclik.jpg') no-repeat center center fixed;
+    background-size: cover;
+}
+
+.card_title {
+    color: white;
+    font-family: 'Montserrat';
+    font-size: 28px;
+    margin-top: 8px;
+    font-weight: 500;
+    height: fit-content;
+}
+
+.card-logo-bsr { 
+    width: 120px;
+    height: 120px;
+    margin-top: 21px;
+}
+
+.button1 { 
+        border: none;
+        width: 350px;
+        height: 50px;
+        background-color: #037F83;
+        border-radius: 5px;
+        font-family: 'Montserrat' , sans-serif;
+        color: white;
+        font-size: 20px;
+        font-weight: 500;
+}
+
+.form-input-label { 
+    background-color: white;
+    border: 1px;
+    color: black;
+    margin-top: 28px;
+    width: 350px;
+    height: 50px;
+    border-radius: 5px;
+    position: relative;
+}
+
+.form-input-svg { 
+    position: absolute;
+    left: 15px;
+    top: 8px;
+    width: 35px;
+    height: 35px;
+    opacity: 75%;
+}
+
+.form-input1 {
+    height: 35px;
+    width: 275px;
+    border: none;
+    font-family: 'Montserrat' , sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+    position: absolute;
+    left: 60px;
+    top: 8px;
+}
+.form-input1:focus{
+    outline: none;
+    font-size: 15px;   
+}
+
+.form-input1::placeholder { 
+    color: black;
+}
+
+.line { 
+    color: rgb(0, 0, 0);
+    width: 350px; 
+    text-align: center; 
+    border-bottom: 1px solid #ffffff0f; 
+    line-height: 0.1em;
+    margin-top: 20px;
+    
+}
+ 
+.outer-text { 
+    color: white;
+    padding:0 10px; 
+    font-family: 'Montserrat' , sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    
+
+}
+.error_card {
+    width: 400px;
+    height: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 3px;
+    border-radius: 15px;
+}
+
+.errors{
+    margin-top: 10px;
+    width: 350px;
+    margin-left: 25px;
+    color: #FF3131;
+    height: fit-content;
+}
+
+.error { 
+    font-family: 'Montserrat' , sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+}

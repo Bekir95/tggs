@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/new.css'%}">
+{% endblock %}
+
+
+{% block body%}
+<section id="haber">
+    <div class="hf-wrapper">
+        <div class="h-wrapper">
+            <h3 class="h-title">{{new.Baslik}}</h3>
+            <p class="h-text">{{new.Aciklama}}</p>
+        </div>
+        <div class="h-img-wrapper">
+            <img class="h-img" src="../{{new.Resim}}" alt="">
+        </div>
+        <div class="h-img-wrapper">
+            <img class="h-img" src="../{{new.Resim2}}" alt="">
+        </div>
+        <div class="h-img-wrapper">
+            <img class="h-img" src="../{{new.Resim3}}" alt="">
+        </div>
+    </div>
+</section>
+{% endblock %}

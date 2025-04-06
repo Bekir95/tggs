@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/bio.css'%}">
+{% endblock %}
+
+
+
+{% block body %}
+
+    <section id="bio">
+        <div class="bio-wrapper">
+            <div class="img-wrapper text-center">
+                <img class="img" src="{% static 'img/emresahin.jpg'%}" alt="">
+            </div>
+
+            <div class="bio text-center">
+                <h3 class="name">Emre Şahin - Genel Başkan</h3>
+                <hr class="mx-auto w-50">
+                <p class="bio-text">
+                    24 Nisan 1994'te Elazığ'da doğdu. İlk öğrenimini Elazığ'da tamamladı. Lise eğitimini Diyarbakır İMKB Kayapınar Lisesinde tamamladıktan sonra 2019 Yılında Erciyes Üniversitesi Mühendislik Fakültesi İnşaat Mühendisliği Bölümünden mezun oldu. Yüksek lisans eğitimini Ahi Evran Üniversitesinde tamamlayan Sayın Şahin ayrıca sosyal, siyasal, ekonomik ve toplumsal alanlarda da çeşitli çalışmalar gerçekleştirmektedir. Akademik kariyerinin yanında ticari faaliyetler de gerçekleştiren Sayın Şahin , mesleki alanda yeterli donanıma sahip olduktan sonra Ankara ' da 2017 Yılında " PAFA Mimarlık ve Mühendislik Limited Şirketini '' kurdu ve ticari hayatını da burada sürdürmeye devam ettirmektedir. 15 Temmuz 2016 gecesi halkla bütünleşen Sayın Şahin, bireysel anlamda çalışmalara başladı. Milletin birlik ve beraberliğine, toplumun dirlik ve düzenine, vatanımızın bölünmez bütünlüğüne faydada bulunmak adına seferber olan Sayın Şahin, 2018 Yılında " Tüm Anadolu 15 Temmuz Şehit ve Gazi Aileleri Derneği ”nin temellerini attı. 2020 yılında ise " 15 TEMMUZ FEDERASYONU " 'nu kurdu. Yönetim kurulu ve üyeleriyle birlikte çeşitli projeler , etkinlikler , çalışmalar , ziyaretler ve çeşitli yardımlar da yapmaktadır. 15 Temmuz Federasyonu ' nun Genel Merkezi Ankara ' da olup Sayın Şahin faaliyetlerini ve çalışmalarına da Ankara ' da devam etmektedir.
+                </p>
+            </div>
+
+            <div class="logo-wrapper text-center">
+                <img src="{% static 'img/tuggev-banner.png'%}" alt="">
+            </div>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,30 @@
+:root {
+    --logo-color:#084687;
+}
+
+.donation-wrapper{
+    padding: 200px 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.card-top img{
+    border-radius: 5px;
+}
+.donation { 
+    padding: 0 50px;
+    flex: 40%;
+    display: flex;
+    align-items: center;
+   
+    flex-wrap: wrap;
+}
+.donation-title-long {
+    color: var(--logo-color);
+    font-family: 'Rubik' , sans-serif;
+    font-size: 36px;
+}
+.donation-exp{
+    font-family: 'Poppins' ,sans-serif;
+}

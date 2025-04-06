@@ -1,0 +1,55 @@
+{% load static %}
+<footer id="ftr">
+    <div class="footer-wrapper text-white">
+        <div class="footer-left">
+            <img src="{% static 'img/tuggev-banner.png'%}" alt="">
+            <span class="lftr-text">
+                <strong>Adres:</strong> Xxxxxxxxxx Mah. Xxxxxxxx Cd. No: 21 Xxxxx-Xxxxxx / TÜRKİYE
+            </span>
+            <br>
+            <span class="lftr-text">
+                <strong>Telefon:</strong> +90 (212) 212 21 21
+            </span>
+            <br>
+            <span class="lftr-text">
+                <strong>E-posta: </strong>info@tuggev.com
+            </span>
+        </div>
+        <div class="footer-right">
+            
+            <ul class="footer-list">
+                <h2 class="footer-list-title">Kurumsal</h2>
+                <li class="footer-list-element"><a href="hakkimizda">Hakkımızda</a></li>
+                <li class="footer-list-element"><a href="iletisim">İletişim</a></li>
+                <li class="footer-list-element"><a href="">Hesap Numaralarımız</a></li>
+                <li class="footer-list-element"><a href="">Gizlilik Politikası</a></li>
+                <li class="footer-list-element"><a href="">Sık Sorulan Sorular</a></li>
+            </ul>
+           <!--
+            <ul class="footer-list">
+                <h2 class="footer-list-title">Sözleşmeler</h2>
+                <li class="footer-list-element">Bağış Sözleşmesi</li>
+                <li class="footer-list-element">İptal ve İade Sözleşmesi</li>
+                <li class="footer-list-element">Mesafeli Satış Sözleşmesi</li>
+                <li class="footer-list-element">Üyelik Sözleşmesi</li>
+                <li class="footer-list-element">asdasd</li>
+            </ul>
+            --> 
+            
+            
+            <ul class="footer-list">
+                <h2 class="footer-list-title">Bağlantılar</h2>
+                <li class="footer-list-element"><a href="{% url 'home' %}">Anasayfa</a></li>
+                <li class="footer-list-element"><a href="{% url 'news' %}">Faaliyetlerimiz</a></li>
+                <li class="footer-list-element"><a href="{% url 'donations' %}">Yardımlarımız</a></li>
+                <li class="footer-list-element"><a href="{% url 'contact'%}">İletişim</a></li>
+                <li class="footer-list-element"><a href="donations">Bağış Yap</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-bottom">
+            
+        </div>
+    </div>
+
+</footer>

@@ -1,0 +1,228 @@
+:root {
+    --logo-color:#084687;
+}
+.nav { 
+    
+   
+    transition: .2s linear;
+}
+/* nav left */
+.nav-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10%;
+    transition: .2s linear;
+    flex-wrap: wrap;
+}
+
+
+.nav-logo-wrapper, .nav-logo-wrapper img{
+    width: 100px;
+
+    transition: .2s linear;
+}
+
+.nav-logo-text { 
+    margin-top: 5px;
+    font-size: 24px;
+    font-family: 'Rubik' , sans-serif;
+    color: var(--logo-color);
+    transition: .2s linear;
+}
+/* text hover underline  animation */
+.hover-underline-animation {
+    position: relative; /* Set position relative */
+   
+  }
+  
+  .hover-underline-animation:after {
+    content: ''; /* Add content after the element */
+    position: absolute; /* Position absolute for pseudo-element */
+    width: 100%; /* Full width */
+    transform: scaleX(0); /* Initial scale of 0 for underline effect */
+    height: 1px; /* Height of the underline */
+    bottom: 9px; /* Align to bottom */
+    left: 0; /* Align to left */
+    background-color: 
+  var(--logo-color); /* Background color of the underline */
+    transform-origin: bottom right; /* Set transform origin */
+    transition: transform 0.25s ease-out; /* Transition effect for the underline */
+  }
+  
+  .hover-underline-animation:hover:after {
+    transform: scaleX(1); /* Scale the underline on hover */
+    transform-origin: bottom left; /* Set transform origin */
+  }
+
+/* nav middle */
+.nav-links-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.nav-links-wrapper a {
+    font-family: 'Poppins' , sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    padding: 0 10px;
+    transition: .2s linear;
+}
+.nav-links-wrapper a:hover{
+    color: var(--logo-color);
+}
+.nav-links-wrapper i {
+    font-size: 14px;
+    padding: 0 1px;
+}
+
+.nav-dropdown {
+    position: relative;
+}
+.nav-dropdown-links { 
+    padding: 10px 20px;
+    display: none!important;
+    list-style-type: none;
+    background-color: white;
+    position: absolute;
+    top: 60%;
+    border-radius: 10px;
+    white-space: nowrap;
+}
+
+.nav-link-wrapper:hover  .nav-dropdown-links{
+    display:block!important;
+}
+
+.nav-dropdown-link { 
+    cursor: pointer;
+    color: black;
+    padding: 10px 0px;
+    transition: .2s linear;
+    font-family: 'Poppins' , sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    
+}
+.nav-dropdown-link:hover{
+    color: var(--logo-color);
+}
+
+/* nav end */
+
+
+.nav-end-wrapper { 
+    display: flex;
+    align-items: center;
+    justify-content: end;
+}
+.nav-end-link i{
+    padding: 0 10px;
+    font-size: 24px;
+    color: var(--logo-color);
+    transition: .2s linear;   
+    
+}
+.nav-end-link i:hover { 
+    color: black;
+    
+}
+
+.nav-button{ 
+    font-family: 'Rubik' , sans-serif;
+    margin: 0 15px;
+    padding: 5px 20px;
+    background-color: transparent;
+    color: var(--logo-color);
+    border: 1px solid #037F83;
+    border-radius: 5px;
+    font-size: 18px;
+    transition: .3s linear;
+}
+.nav-button:hover { 
+    color: white;
+    background-color: var(--logo-color);
+    
+}
+
+.verticalLine {
+    border-left: 1px solid  gray;
+    border-right: 1px solid  gray;
+    
+  }
+
+/* shrink */
+
+.shrink{
+    background-color: white;
+}
+
+.shrink .nav-content { 
+    padding: 5px 10%;
+}
+
+.shrinklogo { 
+    width: 75px!important;
+}
+
+.shrink .nav-content .nav-logo-wrapper h3{
+    display: none;
+}
+
+
+
+#menu-bars {
+    display: none;
+    color: var(--logo-color);
+    font-size: 24px;
+}
+
+@media (max-width:1150px)  {
+    #menu-bars { 
+        display: inline-block;
+    }
+    .nav-links-wrapper , .nav-end-wrapper {
+        flex: 100%;
+        background-color: white!important;
+        flex-wrap: wrap;
+        transition: .2s linear;
+        position: absolute;
+        top: 100%; left: 0; right: 0;
+        background: var(--white);
+        border-top: .1rem solid rgba(0,0,0,.2);
+        padding: .5rem;
+        clip-path: polygon(0 0 , 100% 0 , 100% 0 , 0 0);
+    }
+    .nav-links-wrapper { 
+        margin-top: 50px;
+    }
+    .active .nav-links-wrapper , .active .nav-end-wrapper  {
+        clip-path: polygon(0 0 , 100% 0 , 100% 100%, 0% 100%);
+    }
+    .nav-link-wrapper{
+        text-align: center;
+        flex: 100%;
+        width: 100%;
+        display:block;
+        padding: 1.5rem;
+        background: var(--bsr-icon-bg);
+        
+        font-size: 2rem;
+    }
+    
+
+    .nav-content { 
+        
+        flex-wrap: wrap;
+        
+        padding: 10px 10%;
+        transition: .2s linear;
+    }
+    .nav-end-wrapper { 
+        padding: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}

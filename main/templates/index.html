@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/home.css'%}">
+<link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css'%}">
+
+{% endblock %}
+
+
+
+{% block body %}
+
+<div class="social-m">    
+  <a class="social-1 animbaseoff anim05" target="_blank" href="https://15temmuzfederasyonu.com/"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+  <a class="social-2 animbaseoff anim05" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+  <a class="social-3 animbaseoff anim05" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+  <a class="social-4 animbaseoff anim05" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+  <a class="social-5 animbaseoff anim05" href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+
+  
+
+</div>
+
+
+<!-- banner section --> 
+    <section id="home-banner">
+      <div class="crsl-wrapper">
+        <div id="carouselExampleInterval" class="carousel slide carousel-fade " style="width: 79%;"  data-bs-ride="carousel">
+          <div class="carousel-inner">
+            <div class="carousel-item c1 active "  data-bs-interval="5000">
+              <div class="ct-wrapper w-50" >
+                  <h2 class="carousel-title animbase anim03">Bilgiyle Geleceği Aydınlatın</h2>
+
+                  <p class="carousel-text animbase anim03">Okumaya istekli gençlere ışık tutun, onları bilgiyle donatarak geleceği inşa etmelerine yardımcı olun.</p>
+                  <button onclick="location.href='{% url "donations" %}'" class="carousel-button shadow animbase anim05">Bağışçımız Olun</button>
+              </div>   
+          </div>
+          <div class="carousel-item c2" data-bs-interval="5000">
+              <div class="ct-wrapper w-50">
+                  <h2 class="carousel-title">Genç Yetenekleri Parlatın</h2>
+  
+                  <p class="carousel-text">Ülkemizin parlayan yıldızlarına destek olun, onların potansiyelini keşfedin ve geliştirin.</p>
+                  <button onclick="location.href='{% url "donations" %}'" class="carousel-button shadow ">Bağışçımız Olun</button>
+              </div>   
+          </div>
+          <div class="carousel-item c3">
+                  <div class="ct-wrapper w-50">
+                      <h2 class="carousel-title">Değişimin Kahramanlarına Destek Verin</h2>
+      
+                      <p class="carousel-text">Ülkemizin değişim ve dönüşüm yolculuğunda gençlerimize rehberlik edin, onları başarıya taşıyan bir adım atın.</p>
+                      <button onclick="location.href='{% url "donations" %}'" class="carousel-button shadow ">Bağışçımız Olun</button>
+                  </div>   
+   
+            </div>
+          </div>
+          <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+          </button>
+          <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+          </button>
+        </div>
+        <div class="crsl-r-buttons" style="width: 21%;">
+          <a href="">
+            <div class="icon">
+              <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
+            </div>
+            <div class="info">
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em; font-family: 'Montserrat', sans-serif;;">Gençliğin Kalbi</div>
+              <div class="altindag italic opaque" style="transition: .2s; opacity: .5; font-style: italic;">ALTINDAĞ</div>
+            </div>
+          </a>
+
+         
+
+          <a href="" style="background-color: purple;">
+            <div class="icon">
+              <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
+            </div>
+            <div class="info">
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em;">Gençliğin Kalbi</div>
+              <div class="altindag italic opaque" style="transition: .2s; opacity: .5; font-style: italic;">ALTINDAĞ</div>
+            </div>
+          </a>
+
+          <a href="">
+            <div class="icon">
+              <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
+            </div>
+            <div class="info">
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em;">Gençliğin Kalbi</div>
+              <div class="altindag italic opaque" style="transition: .2s; opacity: .5; font-style: italic;">ALTINDAĞ</div>
+            </div>
+          </a>
+
+          <a href="" style="background-color: #ff6600;">
+            <div class="icon">
+              <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
+            </div>
+            <div class="info">
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em;">Gençliğin Kalbi</div>
+              <div class="altindag italic opaque" style="transition: .2s; opacity: .5; font-style: italic;">ALTINDAĞ</div>
+            </div>
+          </a>
+
+          <a href="" style="background-color: blueviolet;">
+            <div class="icon">
+              <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
+            </div>
+            <div class="info">
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em;">Gençliğin Kalbi</div>
+              <div class="altindag italic opaque" style="transition: .2s; opacity: .5; font-style: italic;">ALTINDAĞ</div>
+            </div>
+          </a>
+          
+        </div>
+      </div>
+        
+    </section>
+<!-- donations section -->
+
+<section id="donations">
+  <div class="donations-wrapper">
+    <H1 class="section-title animbaseoff anim03">YARDIMLARIMIZ <img class="section-image" src="{% static 'img/heart.png'%}" alt=""></H1>
+      <div class="d-card shadow animbaseoff anim05" style="background: url('{% static 'img/banner2.png'%}')no-repeat center center;">
+        <div class="card-content-wrapper text-center">
+        <h3>ÖĞRENCİ BURS YARDIMI</h3>
+        <button onclick="location.href='{% url "donation" 1 %}'" class="d-button">Bilgi Al</button>
+        
+      </div>
+      </div>
+      <div class="d-card shadow animbaseoff anim05" style="background: url('{% static 'img/banner1.png'%}')no-repeat center center;">
+        <div class="card-content-wrapper text-center">
+        <h3>YETİM VE ÖKSÜZ YARDIMI</h3>
+        <button onclick="location.href='{% url "donation" 3 %}'" class="d-button">Bilgi Al</button>
+      </div>
+      </div>
+      <div class="d-card shadow animbaseoff anim05" style="background: url('{% static 'img/banner3.jpg'%}')no-repeat center center;">
+        <div class="card-content-wrapper text-center">
+        <h3>DEPREMZEDE YARDIMI</h3>
+        <button onclick="location.href='{% url "donation" 2 %}'" class="d-button">Bilgi Al</button>
+      </div>
+      </div>
+      
+  </div>
+</section>
+
+<!-- info section  -->
+
+<section id="info">
+  <div class="info-wrapper">
+    <div class="section-left">
+    <H1 class="section-title-left animbaseoff anim03">BİZ KİMİZ?</H1>
+      <p class="section-text-left animbaseoff anim05">{{ whoWeR.biz_kimiz }}</p>
+      <div class="socials">   
+        <a class="social-1 animbaseoff anim05" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+        <a class="social-2 animbaseoff anim05" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+       
+        <a class="social-3 animbaseoff anim05" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      </div>
+    </div>
+  <div class="section-right animbaseoff anim05">
+    <div class="sr-wrapper">
+      <div class="pic-ctn ">
+        <img src="{% static 'img/emresahin.jpg' %}" alt="" class="pic">
+        <img src="{% static 'img/Fatmasahin.jpg' %}" alt="" class="pic">
+        <img src="{% static 'img/emresahin.jpg' %}" alt="" class="pic">
+        <img src="{% static 'img/Fatmasahin.jpg' %}" alt="" class="pic">
+        <img src="{% static 'img/emresahin.jpg' %}" alt="" class="pic">
+      </div>
+  </div>
+  </div>
+  </div>
+</section>
+
+<!-- news section -->
+
+<section class="" id="news">
+  <H1 class="section-title animbaseoff anim03">FAALİYETLERİMİZ <img class="section-image" src="{% static 'img/heart.png'%}" alt=""></H1>
+
+  <div class="swiper asd">
+   
+  <div class="swiper-wrapper">
+    {% for activity in activities %}
+    <div class="news-card swiper-slide shadow shadow-sm ">
+      <div class="card-top">
+        <img class="card-img" src="{{activity.Resim}}" alt="">
+      </div>
+      <div class="card-bottom text-center">
+        <h3 class="card-title">{{ activity.Baslik }}</h3>
+        <p class="card-text">{{ activity.Aciklama }}</p>
+        <button onclick="location.href='{% url "new" 1 %}'" class="news-button">Devamını oku...</button>
+      </div>
+    </div>
+    {% endfor %}
+    <div class="news-card swiper-slide shadow shadow-sm ">
+      <div class="card-top">
+        <img class="card-img" src="{% static 'img/new2.jpg'%}" alt="">
+      </div>
+      <div class="card-bottom text-center">
+        <h3 class="card-title">Lorem ipsum dolor sit.</h3>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, debitis...</p>
+        <button class="news-button">Devamını oku...</button>
+      </div>
+    </div>
+    <div class="news-card swiper-slide shadow shadow-sm ">
+      <div class="card-top">
+        <img class="card-img" src="{% static 'img/new3.jpg'%}" alt="">
+      </div>
+      <div class="card-bottom text-center">
+        <h3 class="card-title">Lorem ipsum dolor sit.</h3>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, debitis...</p>
+        <button class="news-button">Devamını oku...</button>
+      </div>
+    </div>
+    <div class="news-card swiper-slide shadow shadow-sm ">
+      <div class="card-top">
+        <img class="card-img" src="{% static 'img/new1.jpg'%}" alt="">
+      </div>
+      <div class="card-bottom text-center">
+        <h3 class="card-title">Lorem ipsum dolor sit.</h3>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, debitis...</p>
+        <button class="news-button">Devamını oku...</button>
+      </div>
+    </div>
+    <div class="news-card swiper-slide shadow shadow-sm ">
+      <div class="card-top">
+        <img class="card-img" src="{% static 'img/new2.jpg'%}" alt="">
+      </div>
+      <div class="card-bottom text-center">
+        <h3 class="card-title">Lorem ipsum dolor sit.</h3>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, debitis...</p>
+        <button class="news-button">Devamını oku...</button>
+      </div>
+    </div>
+    <div class="news-card swiper-slide shadow shadow-sm ">
+      <div class="card-top">
+        <img class="card-img" src="{% static 'img/new3.jpg'%}" alt="">
+      </div>
+      <div class="card-bottom text-center">
+        <h3 class="card-title">Lorem ipsum dolor sit.</h3>
+        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, debitis...</p>
+        <button class="news-button">Devamını oku...</button>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+  <div class="swiper-pagination"></div>
+
+
+</div>
+
+</section>
+
+<!-- join us section -->
+
+<section id="join-us" style="background: url('{% static 'img/genclik.jpg'%}') no-repeat center center fixed; background-size:cover;">
+  <div class="join-us-wrapper">
+    <div class="join-us-title animbaseoff anim03">SİZ DE BİZİMLE BERABER GENÇLERE IŞIK TUTMAK İSTER MİSİNİZ?</div>
+    <button onclick="location.href='{% url "contact" %}'" class="join-us-button animbaseoff anim05">Gönüllü Ol!</button>
+  </div>
+</section>
+
+<script src="{% static 'js/swiper-bundle.min.js'%}"></script>
+<script src="{% static 'js/home.js'%}"></script>
+{% endblock %}
+
+
+

@@ -1,0 +1,49 @@
+
+
+html, body { 
+    background-color: gray;
+}
+
+.bsr-card{
+    width: 400px;
+    height: 570px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+    margin-top: 5%;
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 15px;
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+}
+
+
+.forgot-pswd { 
+    
+    color: white;
+    
+    font-family: 'Montserrat' , sans-serif;
+    font-size: 18px;
+    font-weight:500;
+    margin-bottom: 0px!important;
+    padding-bottom: 0px!important;
+   
+}
+
+.google-logo { 
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 92px;
+    top: 10px;
+}
+
+.google-text { 
+    position: absolute;
+    left: 130px;
+    height: 20px;
+    top: 15px;
+    font-family: 'Montserrat' , sans-serif;
+    font-size: 13px;
+    
+}

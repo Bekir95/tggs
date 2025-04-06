@@ -1,0 +1,33 @@
+{% extends 'base.html' %} 
+
+{% load static %}
+
+
+{% block head %}
+    <link rel="stylesheet" href="{% static 'css/donations.css'%}">
+{% endblock %}
+{% block body %}
+
+<section id="donations">
+    <div class="donations-wrapper">
+        <h2 class="section-title animbase anim03">YARDIMLARIMIZ <img class="section-image" src="{% static 'img/heart.png'%}" alt=""></h2>
+        
+        {% for donation in donations %}
+        <div class="donation-card shadow animbase anim05" onclick="location.href='{% url 'donation' donation.id %}'">
+            <div class="card-top">
+                <img src="{{donation.Resim}}" alt="">
+            </div>
+            <div class="card-bottom">
+                <h2 class="donation-title">{{ donation.Baslik }}</h2>
+                <div class="cover">
+                <h3 class="donation-price">{{ donation.Fiyat }}₺</h3> 
+                <button class="donation-btn">Bağış Yap <i class="fa-solid fa-heart"></i></button>
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+        
+        
+    </div>
+</section>
+{% endblock %}

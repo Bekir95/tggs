@@ -1,0 +1,48 @@
+:root {
+    --logo-color:#084687;
+}
+
+.bio-wrapper { 
+    padding: 150px 10%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.img-wrapper { 
+    flex: 25%;
+}
+
+.img { 
+    width: 250px;
+}
+
+.bio { 
+    flex: 50%;
+    width: 500px;
+    margin: 20px 0;
+    
+}
+
+.name{ 
+    color: var(--logo-color);
+    font-size: 36px;
+    font-family: 'Rubik' , sans-serif;
+
+}
+.bio-text { 
+    text-align: justify;
+    text-justify: inter-word;
+    min-width: 500px;
+    font-family: 'Poppins' , sans-serif;
+    
+}
+
+.logo-wrapper { 
+    flex: 25%;
+}
+
+.logo-wrapper img{
+    width: 250px;
+}

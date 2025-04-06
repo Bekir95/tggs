@@ -1,0 +1,74 @@
+.yk-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 200px 10%;
+}
+
+.section-title{
+    font-size: 36px;
+    text-align: center;
+    font-family:'Rubik' , sans-serif;
+    flex: 100%;
+}
+
+.managers{
+    flex: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.managerh{
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex:100%;
+}
+.manager-name , .manager-title{
+    font-family: 'Rubik' , sans-serif;
+    font-weight: 400;
+    flex: 100%;
+}
+
+.manager-name{
+    font-size: 30px;
+}
+
+.manager-title{
+    font-size: 18px
+    
+}
+.manager{
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 25%;
+}
+
+.manager-img-wrapper {
+    height: 205px;
+    width: 205px;
+    background: url(../img/yildiz.png) no-repeat;
+    background-size: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.manager-img{
+    width: 150px;
+    height: 150px;
+    border-radius: 50% 50%;
+    object-fit: cover;
+}
+    

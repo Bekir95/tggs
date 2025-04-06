@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/kurumsal.css'%}">
+{% endblock %}
+
+
+{% block body %}
+<section id="company">
+    <div class="company-wrapper">
+        <div class="c-card shadow" onclick="location.href='{% url 'yonetim-kurulu'%}'">
+            Yönetim Kurulumuz
+        </div>
+        <div class="c-card shadow" onclick="location.href='{% url 'il-baskanliklari'%}'">
+            İl Başkanlıklarımız
+        </div>
+        <div class="c-card shadow" onclick="location.href='{% url 'insan-kaynaklari'%}'">
+            İnsan Kaynakları
+        </div>
+        <div class="c-card shadow" onclick="location.href='{% url 'hakkimizda'%}'">
+            Hakkımızda
+        </div>
+        <div class="c-card shadow">
+            Bağış Politikamız
+        </div>
+        <div class="c-card shadow">
+            Gizlilik Politikamız
+        </div>
+    </div>
+</section>
+{% endblock %}
