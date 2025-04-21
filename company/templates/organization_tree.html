@@ -1,0 +1,535 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block head %}
+
+    <title>İdari Yapı Görünümü</title>
+    <style>
+        /* Genel stiller */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            
+            margin: 0 auto;
+            
+            color: #333;
+            background-color: #f9f9f9;
+        }
+
+        .main-container{
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            padding-bottom: 350px;
+        }
+
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #eee;
+            margin-top: 180px;
+        }
+
+        /* Ağaç yapısı stilleri */
+        .tree-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        .tree {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .tree li {
+            position: relative;
+            padding: 10px 5px 0 5px;
+            list-style-type: none;
+        }
+
+        .tree li::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            border-left: 1px solid #ccc;
+            height: 100%;
+            width: 1px;
+        }
+
+        .tree li:last-child::before {
+            height: 20px;
+        }
+
+        .tree li::after {
+            content: "";
+            position: absolute;
+            top: 20px;
+            left: 0;
+            border-top: 1px solid #ccc;
+            width: 20px;
+            height: 0;
+        }
+
+        .tree-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            border-radius: 4px;
+            margin-left: 25px;
+            background-color: #f5f5f5;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+
+        .tree-item:hover {
+            background-color: #e9f7fe;
+        }
+
+        .tree li ul {
+            margin-left: 20px;
+            padding-left: 0;
+        }
+
+        /* Açma-kapama simgeleri */
+        .toggle-icon {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            margin-right: 8px;
+            border-radius: 4px;
+            background-color: #e0e0e0;
+            font-weight: bold;
+            font-size: 14px;
+            transition: all 0.2s ease;
+        }
+
+        .toggle-icon:hover {
+            background-color: #d0d0d0;
+        }
+
+        /* Gizli alt birimler */
+        .collapsed {
+            display: none;
+        }
+
+        /* Birim detayları */
+        .unit-details {
+            font-size: 15px;
+            color: #555;
+        }
+
+        .unit-id {
+            color: #888;
+            font-size: 12px;
+            margin-left: 10px;
+        }
+
+        /* Arama ve filtre bölümü */
+        .search-container {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 10px 40px 10px 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+        }
+
+        .clear-search {
+            position: absolute;
+            right: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #999;
+            cursor: pointer;
+            display: none;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        .clear-search:hover {
+            color: #666;
+        }
+
+        /* Eşleşen öğeleri vurgulama */
+        .highlight {
+            background-color: #fff9c4;
+            border-radius: 2px;
+            padding: 2px 0;
+        }
+
+        /* Sonuç sayısı */
+        .search-results {
+            margin-top: 10px;
+            font-size: 14px;
+            color: #666;
+            display: none;
+        }
+
+        /* Boş sonuç mesajı */
+        .no-results {
+            padding: 20px;
+            text-align: center;
+            color: #666;
+            font-style: italic;
+            display: none;
+        }
+
+        /* Responsive düzenlemeler */
+        @media (max-width: 768px) {
+            .tree-container {
+                padding: 10px;
+            }
+            
+            .tree-item {
+                margin-left: 15px;
+                padding: 6px 8px;
+            }
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+
+    <h1>İdari Yapı Görünümü</h1>
+    <div class="main-container">
+        <div class="search-container">
+            <input type="text" class="search-box" id="searchBox" placeholder="Birim ara...">
+            <span class="clear-search" id="clearSearch">&times;</span>
+        </div>
+        
+        <div class="search-results" id="searchResults"></div>
+        
+        <div class="tree-container">
+            <div class="no-results" id="noResults">Aramanızla eşleşen birim bulunamadı.</div>
+            <ul class="tree" id="unitTree">
+                <!-- Ağaç yapısı buraya dinamik olarak eklenecek -->
+            </ul>
+        </div>
+    </div>
+    
+
+    <script>
+        // Django'dan gelen veriyi temsil eden örnek veri
+        // Bu kısmı Django template syntax'ı ile değiştirebilirsiniz
+        const treeData = {{ tree_data|safe }};
+
+        // Birim nesnelerini saklayan map (id'ye göre)
+        const unitsMap = new Map();
+
+        // Türkçe karakterleri standartlaştıran fonksiyon
+        function normalizeText(text) {
+            if (!text) return '';
+            
+            return text.toLowerCase()
+                .replace(/ı/g, 'i')
+                .replace(/i̇/g, 'i') // i ile nokta
+                .replace(/ö/g, 'o')
+                .replace(/ü/g, 'u')
+                .replace(/ş/g, 's')
+                .replace(/ğ/g, 'g')
+                .replace(/ç/g, 'c');
+        }
+
+        // Ağaç yapısını oluşturan fonksiyon
+function renderTree(data, parentElement) {
+    data.forEach(unit => {
+        // Ünite bilgilerini map'e kaydet
+        unitsMap.set(unit.id.toString(), unit);
+        
+        const li = document.createElement('li');
+        li.setAttribute('data-id', unit.id);
+        li.setAttribute('data-name', unit.name.toLowerCase());
+        li.setAttribute('data-normalized-name', normalizeText(unit.name));
+        
+        // Birim öğesi container
+        const itemDiv = document.createElement('div');
+        itemDiv.className = 'tree-item';
+        itemDiv.setAttribute('data-id', unit.id);
+        
+        // Buraya tıklanabilir link eklenecek
+        const linkElement = document.createElement('a');
+        linkElement.href = `/organizasyon/${unit.id}/`; // Link formatını buradan değiştirebilirsiniz
+        linkElement.style.textDecoration = 'none'; // Linkin altı çizili görünmemesi için
+        linkElement.style.color = 'inherit'; // Metnin rengini korumak için
+        linkElement.style.display = 'flex'; // Flex yapıyı korumak için
+        linkElement.style.alignItems = 'center';
+        linkElement.style.width = '100%';
+        
+        // Açma-kapama simgesi (sadece alt birimleri varsa gösterilir)
+        if (unit.children && unit.children.length > 0) {
+            const toggleIcon = document.createElement('span');
+            toggleIcon.className = 'toggle-icon';
+            toggleIcon.textContent = '+';
+            toggleIcon.onclick = function(e) {
+                e.stopPropagation();
+                e.preventDefault(); // Link tıklamasını önlemek için
+                const childUl = this.closest('.tree-item').nextElementSibling;
+                childUl.classList.toggle('collapsed');
+                this.textContent = childUl.classList.contains('collapsed') ? '+' : '-';
+            };
+            linkElement.appendChild(toggleIcon);
+        } else {
+            // Alt birim yoksa boşluk bırakma
+            const spacer = document.createElement('span');
+            spacer.style.display = 'inline-block';
+            spacer.style.width = '28px'; // Toggle icon + margin kadar boşluk
+            linkElement.appendChild(spacer);
+        }
+        
+        // Birim detayları
+        const details = document.createElement('div');
+        details.className = 'unit-details';
+        
+        // Birim adını ekle
+        const nameSpan = document.createElement('span');
+        nameSpan.className = 'unit-name';
+        nameSpan.textContent = unit.name;
+        details.appendChild(nameSpan);
+        
+        // Birim ID'si (küçük ve soluk)
+        const idSpan = document.createElement('span');
+        idSpan.className = 'unit-id';
+        idSpan.textContent = `ID: ${unit.id}`;
+        details.appendChild(idSpan);
+        
+        linkElement.appendChild(details);
+        itemDiv.appendChild(linkElement);
+        li.appendChild(itemDiv);
+        
+        // Alt birimler için liste oluşturma
+        if (unit.children && unit.children.length > 0) {
+            const ul = document.createElement('ul');
+            ul.className = 'collapsed'; // Başlangıçta kapalı
+            renderTree(unit.children, ul);
+            li.appendChild(ul);
+        }
+        
+        parentElement.appendChild(li);
+    });
+}
+
+
+        // Aksan işaretlerine dikkat ederek metni vurgulayan fonksiyon
+        function highlightTextWithAccents(element, originalText, searchTerm) {
+            // Önce element içeriğini temizle
+            element.textContent = '';
+            
+            // Orijinal metni ve arama terimini normalize et
+            const normalizedText = normalizeText(originalText);
+            
+            let lastIndex = 0;
+            let index = normalizedText.indexOf(searchTerm);
+            
+            while (index !== -1) {
+                // Eşleşmeyen kısmı ekle
+                if (index > lastIndex) {
+                    element.appendChild(document.createTextNode(
+                        originalText.substring(lastIndex, index)
+                    ));
+                }
+                
+                // Eşleşen kısmı highlight yap
+                const highlightSpan = document.createElement('span');
+                highlightSpan.className = 'highlight';
+                highlightSpan.textContent = originalText.substring(index, index + searchTerm.length);
+                element.appendChild(highlightSpan);
+                
+                lastIndex = index + searchTerm.length;
+                index = normalizedText.indexOf(searchTerm, lastIndex);
+            }
+            
+            // Kalan kısmı ekle
+            if (lastIndex < originalText.length) {
+                element.appendChild(document.createTextNode(
+                    originalText.substring(lastIndex)
+                ));
+            }
+        }
+
+        // Öğeyi ve üst öğelerini görünür yapan fonksiyon
+        function makeVisible(element) {
+            if (!element) return;
+            
+            // Öğeyi görünür yap
+            element.style.display = '';
+            
+            // Üst ul elementi varsa, collapsed sınıfını kaldır
+            let parent = element.parentElement;
+            while (parent) {
+                if (parent.tagName === 'UL' && parent.classList.contains('collapsed')) {
+                    parent.classList.remove('collapsed');
+                    
+                    // Toggle ikonunu güncelle
+                    const parentLi = parent.parentElement;
+                    if (parentLi && parentLi.querySelector('.toggle-icon')) {
+                        parentLi.querySelector('.toggle-icon').textContent = '-';
+                    }
+                }
+                
+                // Üst li elementini görünür yap
+                if (parent.tagName === 'LI') {
+                    parent.style.display = '';
+                }
+                
+                parent = parent.parentElement;
+            }
+        }
+
+        // Ağaçtaki tüm öğeleri gizleyen fonksiyon
+        function hideAllTreeItems() {
+            const allItems = document.querySelectorAll('.tree li');
+            allItems.forEach(item => {
+                item.style.display = 'none';
+            });
+        }
+
+        // Ağaçtaki tüm öğeleri gösteren ve varsayılan duruma döndüren fonksiyon
+        function resetTreeView() {
+            // Tüm li öğelerini göster
+            const allItems = document.querySelectorAll('.tree li');
+            allItems.forEach(item => {
+                item.style.display = '';
+            });
+            
+            // Alt ağaçları kapat
+            const allSubtrees = document.querySelectorAll('.tree ul');
+            allSubtrees.forEach(subtree => {
+                subtree.classList.add('collapsed');
+            });
+            
+            // Tüm toggle ikonlarını + yap
+            const allToggles = document.querySelectorAll('.toggle-icon');
+            allToggles.forEach(toggle => {
+                toggle.textContent = '+';
+            });
+            
+            // Vurgulamaları kaldır
+            removeHighlights();
+            
+            // Sonuç mesajını gizle
+            document.getElementById('searchResults').style.display = 'none';
+            document.getElementById('noResults').style.display = 'none';
+        }
+
+        // Vurgulamaları kaldıran fonksiyon
+        function removeHighlights() {
+            // Tüm birim öğelerini dolaş
+            document.querySelectorAll('.tree-item').forEach(item => {
+                const unitId = item.getAttribute('data-id');
+                const unit = unitsMap.get(unitId);
+                
+                if (unit) {
+                    // Unit name element'ini bul
+                    const nameElement = item.querySelector('.unit-name');
+                    if (nameElement) {
+                        // Orijinal metni geri yükle
+                        nameElement.textContent = unit.name;
+                    }
+                }
+            });
+        }
+
+        // Gelişmiş arama işlevi
+        function setupSearch() {
+            const searchBox = document.getElementById('searchBox');
+            const clearButton = document.getElementById('clearSearch');
+            
+            searchBox.addEventListener('input', function() {
+                const searchTerm = normalizeText(this.value.trim());
+                
+                if (searchTerm === '') {
+                    resetTreeView();
+                    clearButton.style.display = 'none';
+                } else {
+                    performSearch(searchTerm);
+                    clearButton.style.display = 'block';
+                }
+            });
+            
+            clearButton.addEventListener('click', function() {
+                searchBox.value = '';
+                resetTreeView();
+                this.style.display = 'none';
+            });
+        }
+
+        function performSearch(term) {
+            if (!term) {
+                resetTreeView();
+                return;
+            }
+            
+            // Önce tüm öğeleri gizle
+            hideAllTreeItems();
+            
+            // Eşleşmeleri bul
+            const treeItems = document.querySelectorAll('.tree-item');
+            let matchCount = 0;
+            
+            treeItems.forEach(item => {
+                const unitId = item.getAttribute('data-id');
+                const unit = unitsMap.get(unitId);
+                
+                if (unit) {
+                    // Birim adını normalize et
+                    const normalizedName = normalizeText(unit.name);
+                    
+                    if (normalizedName.includes(term)) {
+                        // Eşleşen öğeyi ve üst öğelerini göster
+                        const li = item.closest('li');
+                        makeVisible(li);
+                        
+                        // Metni vurgula (orijinal metinde)
+                        const nameElement = item.querySelector('.unit-name');
+                        if (nameElement) {
+                            // Vurgulamayı doğru yapabilmek için biraz daha karmaşık bir yaklaşım
+                            highlightTextWithAccents(nameElement, unit.name, term);
+                        }
+                        
+                        matchCount++;
+                    }
+                }
+            });
+            
+            // Sonuç sayısını güncelle
+            const resultsEl = document.getElementById('searchResults');
+            const noResultsEl = document.getElementById('noResults');
+            
+            if (matchCount > 0) {
+                resultsEl.textContent = `${matchCount} sonuç bulundu.`;
+                resultsEl.style.display = 'block';
+                noResultsEl.style.display = 'none';
+            } else {
+                resultsEl.style.display = 'none';
+                noResultsEl.style.display = 'block';
+            }
+        }
+
+        // Sayfa yüklendiğinde ağaç yapısını oluştur
+        document.addEventListener('DOMContentLoaded', function() {
+            const treeContainer = document.getElementById('unitTree');
+            renderTree(treeData, treeContainer);
+            setupSearch();
+        });
+    </script>
+{% endblock %}

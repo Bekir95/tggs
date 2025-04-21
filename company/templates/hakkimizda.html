@@ -3,51 +3,144 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/hakkimizda.css'%}">
+
+<style>
+  * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+}
+
+.hero {
+  background-image: url('https://www.izotup.com/d/r/hakkimizda.jpeg');
+  background-size: cover;
+  background-position: center;
+  height: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  margin-top: 180px;
+  margin-bottom: 30px;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
+}
+
+.hero-overlay {
+  color: white;
+  text-align: center;
+  z-index: 1;
+  position: relative;
+}
+
+.hero h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+}
+
+.hero p {
+  font-size: 16px;
+}
+
+.hero a {
+  color: #FFA500;
+  text-decoration: none;
+}
+
+.content {
+  padding: 60px 20px;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.image {
+  flex: 1 1 40%;
+}
+
+.image img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+
+.text {
+  flex: 1 1 55%;
+}
+
+.text p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+.text .highlight {
+  color: #f5a100;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.text .highlight:hover {
+  color: #084687;
+}
+
+</style>
 {% endblock %}
 
 {% block body %}
 
-<section id="info">
-    <div class="info-wrapper">
-        
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    HAKKIMIZDA
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  15 TEMMUZ FEDERASYONU; 2018 yılında temelleri atılan, Genel Merkezi Ankara'da bulunan fakat Türkiye'nin dört bir yanında ve yurt dışında faaliyet gösteren bir Sivil Toplum Kuruluşudur.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    MİSYONUMUZ
-                </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    15 TEMMUZ FEDERASYONU olarak vatanımızın her karış toprağı için canını düşünmeden ateşe atan bütün Şehitlerimizin aziz hatırasını yaşatmak, şehit ailelerine, gazilerimize, gazilerimizin yakınları başta olmak üzere doğal afetlerde, yetim, öksüz, engelli, dul, burs ihtiyacı olan öğrencilerimize ve mağdur durumda olan vatandaşlarımıza yönelik etkinlik ve faaliyetlerde bulunmak veya planlanan etkinlik ve faaliyetlerin koordinasyonunu sağlamaktır.
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    VİZYONUMUZ
-                </button>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    15 TEMMUZ FEDERASYONU olarak bütün şehit aileleri, gazilerimiz, gazi yakınları başta olmak üzere doğal afetlerde, yetim, öksüz, engelli, dul, burs ihtiyacı olan öğrencilerimize ve mağdur durumda olan vatandaşlarımıza imkanlarımızın bütünüyle, hem maddi hem de manevi olarak bütün yardımları sağlamak ve gelecek yardımlara aracı olmaktır.
-                </div>
-              </div>
-            </div>
-          </div>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hakkımızda</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <section class="hero">
+    <div class="hero-overlay">
+      <h1>Hakkımızda</h1>
+      <p><a href="#">TGGV</a> / <span>Hakkımızda</span></p>
     </div>
-</section>
+  </section>
+
+  <section class="content">
+    <div class="container">
+      <div class="image">
+        <img src="{% static 'img/banner2.png'%}" alt="Hakkımızda">
+      </div>
+      <div class="text">
+        <p>Firmamız, "Yeni nesil yalıtım sistemleri" sloganıyla yüksek teknolojiye sahip çözümleri ile sektöründeki öncü firmalardan bir tanesidir.</p>
+        <p>Firmamız, Türkiye’de yalıtım bilincinin gelişmesi ile tüketiciyi doğru bilgilendirme prensibi ile doğru tüketim yaptırmayı ilke edinmiştir.</p>
+        <p>Sprey Poliüretan, Polyurea uygulamalarıyla ağırlıklı olarak Türkiye’nin tüm bölgelerinde, İzobir markasıyla yalıtım uygulama ve makina parkları kurarak, kaliteli eğitimli personeller ile tüketicinin ihtiyaçlarını karşılamaktadır.</p>
+        <p>Gelişen teknoloji, her sektörü olduğu gibi yalıtım sektörünü de baş döndürücü bir hızla etkilemekte ve ağırlığını her geçen gün hissettirmektedir. Dolayısıyla Sprey poliüretan ve polyurea yalıtım uygulamalarında daha küçük metrajlarda, profesyonel bir ekip ve makine ihtiyacı duymaksızın, nihai tüketicilerin, kendi kendine de uygulayabileceği sprey izolasyon tüp sistemimize firmamız tarafından üretilmeye başlanmıştır. İzotüp markamızla tüm Türkiye’de sektörümüzde ilk olan ürünümüzle hizmet vermekteyiz.</p>
+        
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
+
 {% endblock %}

@@ -1,34 +1,54 @@
 :root {
-    --logo-color:#084687;
+    --logo-color: #084687;
 }
+
 #ftr { 
     padding: 100px 10%;
     background-color: var(--logo-color);
-
+    position: relative;
+    overflow: hidden; /* Açıların taşmasını engellemek için */
 }
 
-.footer-wrapper{
+.footer-wrapper {
     display: flex;
     align-items: center;
     justify-content: space-between;
     flex-wrap: wrap;
+    z-index: 2;
 }
 
 .footer-left { 
     flex: 30%;
     justify-content: center;
+    position: relative;
+    z-index: 3;
 }
 
-.footer-left img{
+.footer-left img {
     width: 300px;
     display: block;
     padding-bottom: 20px;
+    transition: transform 0.3s ease, filter 0.3s ease;
 }
+
+.footer-left img:hover {
+    transform: scale(1.05);
+    filter: brightness(1.2);
+}
+
 .lftr-text { 
-    font-family: 'Rubik' , sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-size: 16px;
     font-weight: 300;
     display: block;
+    color: white;
+    line-height: 1.6;
+    opacity: 0.8;
+    transition: opacity 0.3s ease;
+}
+
+.lftr-text:hover {
+    opacity: 1;
 }
 
 .footer-right { 
@@ -37,29 +57,80 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    position: relative;
+    z-index: 3;
 }
 
-.footer-list{
+.footer-list {
     list-style-type: none;
     text-align: start;
-    padding-left: 300px;    
+    padding-left: 300px;
+    position: relative;
+    z-index: 3;
 }
-    
 
-.footer-list-title{
-    font-family: 'Rubik' , sans-serif;
+.footer-list-title {
+    font-family: 'Rubik', sans-serif;
     font-size: 30px;
     padding-bottom: 10px;
-    }
-.footer-list-element a{
+    color: white;
+}
+
+.footer-list-element a {
     color: white;
     text-decoration: none;
-    font-family: 'Rubik' , sans-serif;
+    font-family: 'Rubik', sans-serif;
     font-size: 16px;
-    padding: 5px 0px;
-    transition: .2s linear;
+    padding: 5px 0;
+    transition: color 0.3s ease, transform 0.3s ease;
 }
+
 .footer-list-element a:hover { 
-    color: black;
+    color: #ffcd02;
     cursor: pointer;
+    text-decoration: underline;
+    transform: translateX(5px);
+}
+
+.footer-bottom {
+    margin-top: 30px;
+    font-size: 12px;
+    color: white;
+    opacity: 0.7;
+}
+
+.footer-bottom a {
+    color: white;
+    text-decoration: none;
+}
+
+.footer-bottom a:hover {
+    text-decoration: underline;
+}
+
+/* Dinamik açı efekti */
+#ftr:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -20%;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.1);
+    transform: rotate(-15deg);
+    z-index: 1;
+    pointer-events: none;
+    animation: rotateAnimation 6s infinite ease-in-out;
+}
+
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(-15deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    100% {
+        transform: rotate(-15deg);
+    }
 }

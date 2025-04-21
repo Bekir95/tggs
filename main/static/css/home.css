@@ -85,6 +85,16 @@
   color: #25d366;
 }
 
+.social-6:hover .fa-kickstarter{
+  color: rgba(66, 202, 19, 1);
+}
+
+
+.social-7:hover .fa-twitch{
+  color: #9147ff;
+}
+
+
 
 
 /* home carousel  */
@@ -113,7 +123,7 @@
    position: absolute;
    right: 100px;
    z-index: 1;
-   height: 750px;
+   height: 720px;
    
    width: 400px;
    padding: 0;
@@ -170,7 +180,7 @@
 
 .carousel-item { 
     width: 100%;
-    height: 750px;
+    height: 720px;
     display: flex!important;
     align-items: center;
     justify-content: center;
@@ -256,11 +266,13 @@
 /* donations */
 
 .donations-wrapper{ 
+  
     padding: 25px 10%;
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    margin-top: 100px;
 }
 
 .d-card { 

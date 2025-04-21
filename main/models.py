@@ -10,3 +10,4 @@ class Activities(models.Model):
     Resim = models.ImageField(upload_to='djangouploads/mainActivities', null=True , blank=True)
 
 
+

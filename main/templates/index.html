@@ -3,6 +3,760 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/home.css'%}">
 <link rel="stylesheet" href="{% static 'css/swiper-bundle.min.css'%}">
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+   
+<style>
+  .scroll-down-container {
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  cursor: pointer;
+  font-family: Arial, sans-serif;
+  z-index: 1000;
+  
+}
+
+.scroll-down-icon {
+  animation: bounce 2s infinite;
+}
+
+.scroll-down-container p {
+    line-height: 1.5;
+    font-family: 'Montserrat',sans-serif;;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    text-align: center;
+    color: #296f8f;;
+    text-transform: uppercase;
+    font-size: 9px;
+    box-sizing: border-box;
+    opacity: .8;
+    letter-spacing: 10px;
+    margin-top: 15px;
+}
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+  60% {
+    transform: translateY(5px);
+  }
+}
+
+
+
+
+.projectspreview{
+  line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: #fff;
+    color: #333;
+    position: relative;
+    padding: 0;
+    margin-top: 200px;
+    margin-bottom: 60px;
+    height: 400px;
+}
+
+.projectlist{
+  
+    
+    line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    box-sizing: border-box;
+    width: 50%;
+    flex: 50%;
+    background-color: #fff;
+    color: #333;
+    position: relative;
+    padding: 0;
+    height: 100%;
+
+
+}
+
+.project-slider{
+  line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    pointer-events: all;
+    box-sizing: border-box;
+    width: 100%;
+    color: var(--text);
+    user-select: none;
+    box-shadow: 0 0 40px #00000010;
+    background: var(--bg-sky);
+    border: 0 solid hsla(0,0%,100%,.9);
+    height: 100%;
+    
+
+}
+
+.swiper-wrapper{
+   line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    pointer-events: all;
+    color: var(--text);
+    user-select: none;
+    
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    display: flex;
+    box-sizing: content-box;
+    transform: translateZ(0);
+    display: flex;
+  transition: transform 0.3s ease-in-out;
+
+}
+
+.homeslider_0{
+     line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    pointer-events: all;
+    color: var(--text);
+    user-select: none;
+    
+    box-sizing: border-box;
+
+}
+
+.swiper-notification{
+   line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-family: 'Montserrat',sans-serif;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    pointer-events: all;
+    color: var(--text);
+    user-select: none;
+    
+    box-sizing: border-box;
+
+
+}
+
+
+
+
+
+
+
+.baskan-part{
+  
+    line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    box-sizing: border-box;
+    width: 50%;
+    flex: 50%;
+    padding: 10vw;
+    padding-bottom: 5vw;
+    position: relative;
+    background: linear-gradient(-160deg,#db4551,#6b0d0d);
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: #fff;
+    font-family: 'Open Sans',sans-serif;
+    height: 100%;
+}
+
+.baskan-part-body{
+  line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    color: #fff;
+    font-family: 'Open Sans',sans-serif;
+    box-sizing: border-box;
+    z-index: 1;
+    height: 100%;
+}
+
+.baskan-part-body p{
+  line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    color: #fff;
+    font-family: 'Open Sans',sans-serif;
+    box-sizing: border-box;
+    margin-top: 0;
+    margin-bottom: 1rem;
+
+}
+.baskan-part-topleft{
+   text-align: left;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    color:  #fff;
+    font-family: 'Open Sans',sans-serif;
+    box-sizing: border-box;
+    position: absolute;
+    top: 40px;
+    line-height: 1em;
+    border-radius: 0px;
+    font-size: 1.4em;
+    white-space: nowrap;
+    padding: 15px 25px;
+    padding-right: 50px;
+    left: -25px;
+    background: linear-gradient(-60deg,#0a6986,#094457);
+    z-index: 1;
+}
+
+.font-sm{
+  text-align: left;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    color: #fff;
+    font-family: 'Open Sans',sans-serif;
+    line-height: 1em;
+    white-space: nowrap;
+    box-sizing: border-box;
+    opacity: .5;
+    font-size: .6em;
+}
+
+.baskan-part-buttons{
+  line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    color: #fff;
+    font-family: 'Open Sans',sans-serif;
+    box-sizing: border-box;
+    position: absolute;
+    z-index: 1;
+    right: 40px;
+    top: 50%;
+}
+
+.button{
+  
+    line-height: 1.5;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    font-family: 'Open Sans',sans-serif;
+    box-sizing: border-box;
+    color: #fff;
+    cursor: pointer;
+    border: 0;
+    transition: .3s;
+    border-radius: 0px;
+    background: linear-gradient(-160deg,#db4551,#6b0d0d);
+    margin: 10px;
+    padding: 10px 30px;
+    font-size: .8em;
+    text-align: left;
+}
+
+.button a {
+  line-height: 1.5;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    font-family: 'Open Sans',sans-serif;
+    font-size: .8em;
+    text-align: left;
+    box-sizing: border-box;
+    background-color: transparent;
+    text-decoration: none;
+    transition: .3s;
+    color: #fff;
+}
+
+.baskan-part-bg{
+   line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    color: #fff;
+    font-family: 'Open Sans',sans-serif;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    position: absolute;
+    width: 100%;
+    background-position: 50%;
+    bottom: 0;
+    left: auto;
+    z-index: 0;
+    height: 100%;
+    background-size: cover;
+    right: 0;
+    opacity: .2;
+    background-image: url(https://sx.altindag.bel.tr/);
+    height: 100%;
+}
+
+
+.baskan-part-logo{
+  line-height: 1.5;
+    text-align: left;
+    font-size: calc(.5vw + 8px);
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    user-select: auto!important;
+    pointer-events: all;
+    color: #fff;
+    font-family: 'Open Sans',sans-serif;
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    background-position: 50%;
+    height: 130%;
+    bottom: 0;
+    right: 0;
+    left: auto;
+    z-index: 0;
+    filter: drop-shadow(0 0 40px #000);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-image: url(https://sx.altindag.bel.tr//client/webs/altindag.bel/images/veysel-tiryaki-3.png);
+left: 15%;
+
+}
+
+.swiper-slide {
+  width: 100%;
+  flex-shrink: 0;
+}
+
+.swiper-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* pop-up */
+
+.is-hide{
+        display: none;
+}
+ .popup-box{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    bottom:0;
+    width:100%;
+    z-index:3
+}
+ .popup-box-content{
+    width:800px;
+    height:450px;
+    display:block;
+    position:absolute;
+    top:50%;
+    left:50%;
+    border-radius:3px;
+    margin:-225px 0 0 -420px;
+    box-shadow:0 3px 20px 0 rgba(0,0,0,.5);
+    z-index:2
+}
+ .popup-content{
+    background:#fff;
+    display:block;
+    width:100%;
+    height:100%;
+    border-radius:3px;
+    overflow:hidden
+}
+ .popup-overlay{
+  
+    position:absolute;
+    top:0;
+    left:0;
+    bottom:0;
+    width:100%;
+    background-color: rgba(8, 70, 135, 0.25); /* Arka planı siyah ve transparan yapar */
+    z-index:1
+}
+ .popup-box-close-button {
+     background: #fff;
+     position: absolute;
+     width:2em;
+     height:2em;
+     line-height:2em;
+     text-align: center;
+     top:-1em;
+     right: -1em;
+     box-shadow: 0 -1px 1px 0 rgba(0,0,0,.2);
+     border: none;
+     border-radius: 50%;
+     cursor:pointer;
+     padding:0;
+     outline:none
+}
+ .popup-box-close-button svg{
+    vertical-align:middle
+}
+ .popup-content img{
+    display:block;
+    width:100%;
+    height:100%;
+    border-radius:3px;
+}
+ .popup-flow-box{
+    position:relative;
+    overflow:hidden
+}
+
+/* güncel */
+
+/* Ortak özellikler */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  user-select: auto !important;
+}
+
+/* #guncelbutton için stil */
+#guncelbutton {
+  text-align: left;
+  color: #212932;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 400;
+  filter: brightness(1.2);
+  border: 1px dotted #506d8b;
+  padding: 25px 30px;
+  width: 160px;
+  line-height: 1.2em;
+  font-size: .8em;
+  background: #455d77;
+  transition: .2s;
+  position: fixed;
+  
+  top: 18%;
+ 
+  
+  z-index: 200;
+}
+
+#guncelbutton a {
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 400;
+  line-height: 1.2em;
+  font-size: .8em;
+  background-color: transparent;
+  text-decoration: none;
+  transition: .3s;
+  color: #fff;
+}
+
+/* .name ve .exp için ortak stil */
+.name,
+.exp {
+  text-align: left;
+  font-family: 'Montserrat', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  user-select: auto !important;
+  line-height: 1.2em;
+  color: #fff;
+  box-sizing: border-box;
+  transition: .3s;
+}
+
+/* .name için stil */
+.name {
+  opacity: .4;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+/* .exp için stil */
+.exp {
+  opacity: .8;
+  font-size: .8em;
+}
+
+/* Hover efektleri */
+#guncelbutton:hover {
+  filter: brightness(1);
+}
+
+#guncelbutton:hover .name {
+  opacity: 1;
+}
+
+/* social menu */
+
+.social-wrapper {
+  position: fixed;
+  top: 30%;
+  left: 0;
+  transform: translateY(-50%);
+  z-index: 999;
+}
+
+.social-toggle {
+  background: #333;
+  color: white;
+  padding: 10px 12px;
+  cursor: pointer;
+  border-radius: 0 5px 5px 0;
+  font-size: 20px;
+}
+
+.social-m {
+
+  z-index: 10;
+  flex-direction: column;
+  font-size: 1.2em;
+  margin-top: 300px;
+
+  display: flex;
+  align-items: center;
+
+  left: 20px;
+  transform: translateY(-50%);
+  top: 50%;
+  position: fixed;
+  box-sizing: border-box;
+  unicode-bidi: isolate;
+  user-select: auto !important;
+  font-family: 'Montserrat',sans-serif;
+  font-weight: 400;
+  overflow: hidden;
+  -webkit-font-smoothing: antialiased;
+
+
+  
+  margin-left: -100px; /* gizle */
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.social-wrapper:hover .social-m {
+  margin-left: 0;
+  opacity: 1;
+}
+
+
+
+/* gizle *//* gizle *//* gizle *//* gizle *//* gizle */
+
+.outer-container {
+            width: 100%;
+            max-width: 1600px;
+            margin: 50px auto;
+            padding: 15px auto;
+            background-color: white;
+
+        }
+        .content-container {
+            
+            margin: 0 auto;
+            display: flex;
+            gap: 20px;
+        }
+        .left-section {
+            flex: 2;
+        }
+        .right-section {
+            flex: 1;
+	    
+        }
+        .main-news-container {
+            margin-bottom: 20px;
+        }
+        .main-news img {
+            width: 100%;
+            height: 480px;
+            object-fit: cover;
+            background-color: #8ea5b9;
+        }
+        .main-news-content {
+            padding: 10px 0;
+        }
+        .main-news h1 {
+            font-size: 20px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+        .main-news p {
+            font-size: 13px;
+            line-height: 1.4;
+            color: #555;
+            margin-bottom: 12px;
+        }
+        /* Alt haberler kısmı */
+        .featured-news {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+            border-top: 1px solid #eee;
+            padding-top: 10px;
+        }
+        .news-item {
+            flex: 1;
+            padding: 8px 0;
+            
+        }
+        
+        .news-item a{
+          text-decoration: none;
+        }
+
+        .news-item h3 {
+            font-size: 13px;
+            font-weight: bold;
+            color: #333;
+            text-transform: uppercase;
+        }
+        /* Duyurular bölümü */
+        .announcements-outer {
+            background-color: #34495e;
+            border-radius: 0;
+            overflow: hidden;
+	    height:100%;
+	    padding: 15px; /* Container ile dış elemanlar arasında boşluk */
+        }
+        .announcements-header {
+            background-color: #2c3e50;
+            padding: 12px;
+            text-align: center;
+        }
+        .announcements-header h2 {
+            font-size: 14px;
+            font-weight: normal;
+            letter-spacing: 3px;
+            color: white;
+        }
+        .announcements-container {
+	    margin-top:15px;
+            padding: 0;
+            
+        }
+
+        .announcements-container a{
+          text-decoration: none;
+        }
+        .announcement-item {
+            padding: 12px;
+            border-bottom: 1px solid #415b76;
+        }
+        .announcement-item:nth-child(odd) {
+            background-color: #3a546e;
+padding-top: 16px; /* daha büyük */
+    padding-bottom: 16px;
+            
+        }
+        .announcement-item:nth-child(even) {
+            background-color: #34495e;
+	    
+        }
+        .announcement-title {
+            display: flex;
+            align-items: flex-start;
+            font-size: 12px;
+            line-height: 1.3;
+            margin-bottom: 4px;
+            color: white;
+        }
+
+        .announcement-title a{
+          color: white;
+        }
+
+        .announcement-icon {
+            margin-right: 8px;
+            flex-shrink: 0;
+            color: white;
+            font-size: 10px;
+        }
+
+      
+        .announcement-date {
+            color: #b3c2d1;
+            font-size: 12px;
+            margin-left: 18px;
+        }
+        
+        @media (max-width: 768px) {
+            .content-container {
+                flex-direction: column;
+            }
+            .featured-news {
+                flex-direction: column;
+            }
+            .news-item {
+                margin-bottom: 10px;
+            }
+        }
+
+        .card-bottom h3{
+          font-size: medium;
+        }
+
+ 
+
+</style>
 
 {% endblock %}
 
@@ -10,16 +764,57 @@
 
 {% block body %}
 
-<div class="social-m">    
-  <a class="social-1 animbaseoff anim05" target="_blank" href="https://15temmuzfederasyonu.com/"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-  <a class="social-2 animbaseoff anim05" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-  <a class="social-3 animbaseoff anim05" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-  <a class="social-4 animbaseoff anim05" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a>
-  <a class="social-5 animbaseoff anim05" href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+<!-- pop up -->
 
+<div class='popup-box is-hide' id='popup-box' style="z-index:45;">
+    <div aria-label='Close' class="popup-overlay" onclick='document.getElementById("popup-box").style.display="none";removeClassonBody();' role="button" tabindex="0"></div>
+      <div class='popup-box-content'>
+            <button aria-label='Close' class='popup-box-close-button' onclick='document.getElementById("popup-box").style.display="none";removeClassonBody();' style="margin-top:-10px;"><svg height='24' viewBox='0 0 24 24' width='24' style="margin-top:-5px;"><path d='M19,6.41L17.59,5L12,10.59L6.41,5L5,6.41L10.59,12L5,17.59L6.41,19L12,13.41L17.59,19L19,17.59L13.41,12L19,6.41Z' fill='#333'></path></svg></button>
+      
+        <div class='popup-content'>
+                      <!--<img alt='' height='318'  title='' width='635' />-->
+            <iframe width="100%" height="100%" src="https://www.youtube.com/embed/jlXS2RvUCk4"  frameborder="0"  allowfullscreen></iframe>
+            
+            
+        </div>
+          
+    </div>
+  </div>
+
+
+
+
+
+
+
+<!-- social media -->
+
+
+
+<div id="guncelbutton" class="absolute pagebutton left-center"><a href="guncel">
+  <div class="name">TGGV</div>
+  <div class="exp">GÜNCEL</div>
+</a></div>
+
+<div class="social-wrapper">
+  <div class="social-toggle">☰</div>
+  <div class="social-menu">
+    <div class="social-m">    
   
-
+      <a class="social-6 animbaseoff anim05" target="_blank" href="https://15temmuzfederasyonu.com/"><i class="fab fa-kickstarter" aria-hidden="true"></i></a>
+      <a class="social-7 animbaseoff anim05" target="_blank" href="https://15temmuzfederasyonu.com/"><i class="fab fa-twitch" aria-hidden="true"></i></a>
+      <a class="social-1 animbaseoff anim05" target="_blank" href="https://15temmuzfederasyonu.com/"><i class="fab fa-facebook" aria-hidden="true"></i></a>
+      <a class="social-2 animbaseoff anim05" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
+      <a class="social-3 animbaseoff anim05" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
+      <a class="social-4 animbaseoff anim05" href="#"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+      <a class="social-5 animbaseoff anim05" href="#"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+    
+      
+    
+    </div>
+  </div>
 </div>
+
 
 
 <!-- banner section --> 
@@ -32,7 +827,7 @@
                   <h2 class="carousel-title animbase anim03">Bilgiyle Geleceği Aydınlatın</h2>
 
                   <p class="carousel-text animbase anim03">Okumaya istekli gençlere ışık tutun, onları bilgiyle donatarak geleceği inşa etmelerine yardımcı olun.</p>
-                  <button onclick="location.href='{% url "donations" %}'" class="carousel-button shadow animbase anim05">Bağışçımız Olun</button>
+                  <button onclick="location.href='{% url "donation" 1 %}'" class="carousel-button shadow animbase anim05">Bağışçımız Olun</button>
               </div>   
           </div>
           <div class="carousel-item c2" data-bs-interval="5000">
@@ -40,7 +835,7 @@
                   <h2 class="carousel-title">Genç Yetenekleri Parlatın</h2>
   
                   <p class="carousel-text">Ülkemizin parlayan yıldızlarına destek olun, onların potansiyelini keşfedin ve geliştirin.</p>
-                  <button onclick="location.href='{% url "donations" %}'" class="carousel-button shadow ">Bağışçımız Olun</button>
+                  <button onclick="location.href='{% url "donation" 1 %}'" class="carousel-button shadow ">Bağışçımız Olun</button>
               </div>   
           </div>
           <div class="carousel-item c3">
@@ -48,7 +843,7 @@
                       <h2 class="carousel-title">Değişimin Kahramanlarına Destek Verin</h2>
       
                       <p class="carousel-text">Ülkemizin değişim ve dönüşüm yolculuğunda gençlerimize rehberlik edin, onları başarıya taşıyan bir adım atın.</p>
-                      <button onclick="location.href='{% url "donations" %}'" class="carousel-button shadow ">Bağışçımız Olun</button>
+                      <button onclick="location.href='{% url "donation" 1 %}'" class="carousel-button shadow ">Bağışçımız Olun</button>
                   </div>   
    
             </div>
@@ -63,55 +858,80 @@
           </button>
         </div>
         <div class="crsl-r-buttons" style="width: 21%;">
-          <a href="">
+          <a href="" style="background-color: #4CAF50;">
             <div class="icon">
               <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
             </div>
             <div class="info">
               <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em; font-family: 'Montserrat', sans-serif;;">Gençliğin Kalbi</div>
-              <div class="altindag italic opaque" style="transition: .2s; opacity: .5; font-style: italic;">ALTINDAĞ</div>
+              
             </div>
           </a>
 
          
 
-          <a href="" style="background-color: purple;">
+          <a href="" style="background-color: #FF9800;">
             <div class="icon">
               <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
             </div>
             <div class="info">
-              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em;">Gençliğin Kalbi</div>
-              <div class="altindag italic opaque" style="transition: .2s; opacity: .5; font-style: italic;">ALTINDAĞ</div>
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em; font-family: 'Montserrat', sans-serif;;">Gelişimin Kalbi</div>
+              
             </div>
           </a>
 
-          <a href="">
+          <a href="" style="background-color: #2196F3;">
             <div class="icon">
               <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
             </div>
             <div class="info">
-              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em;">Gençliğin Kalbi</div>
-              <div class="altindag italic opaque" style="transition: .2s; opacity: .5; font-style: italic;">ALTINDAĞ</div>
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em; font-family: 'Montserrat', sans-serif;;">Eğitimin Kalbi</div>
             </div>
           </a>
 
-          <a href="" style="background-color: #ff6600;">
+          <a href="" style="background-color: #F44336;">
             <div class="icon">
               <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
             </div>
             <div class="info">
-              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em;">Gençliğin Kalbi</div>
-              <div class="altindag italic opaque" style="transition: .2s; opacity: .5; font-style: italic;">ALTINDAĞ</div>
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em; font-family: 'Montserrat', sans-serif;;">Sporun Kalbi</div>
             </div>
           </a>
 
-          <a href="" style="background-color: blueviolet;">
+          <a href="" style="background-color: #8BC34A;">
             <div class="icon">
               <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
             </div>
             <div class="info">
-              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em;">Gençliğin Kalbi</div>
-              <div class="altindag italic opaque" style="transition: .2s; opacity: .5; font-style: italic;">ALTINDAĞ</div>
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em; font-family: 'Montserrat', sans-serif;;">Sağlığın Kalbi</div>
+            </div>
+          </a>
+
+          
+          <a href="" style="background-color: #9C27B0;">
+            <div class="icon">
+              <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
+            </div>
+            <div class="info">
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em; font-family: 'Montserrat', sans-serif;;">Kültürün Kalbi</div>
+            </div>
+          </a>
+
+          <a href="" style="background-color: #607D8B;">
+            <div class="icon">
+              <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
+            </div>
+            <div class="info">
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em; font-family: 'Montserrat', sans-serif;;">Bilimin Kalbi</div>
+            </div>
+          </a>
+
+          <a href="" style="background-color: #3F51B5;">
+            <div class="icon">
+              <img src="https://yeni.altindag.bel.tr/client/webs/altindag.bel/images/icons/gencligin-kalbi.png">
+            </div>
+            <div class="info">
+              <div class="name italic font-xxl" style="font-weight: 900; opacity: .8; transition: .2s; font-style: italic; font-size: 1.8em; font-family: 'Montserrat', sans-serif;;">Teknolojinin Kalbi</div>
             </div>
           </a>
           
@@ -119,61 +939,160 @@
       </div>
         
     </section>
+<!-- aşağı kaydır -->
+    <div class="scroll-down-container">
+      <svg class="scroll-down-icon" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="#296f8f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="12" y1="5" x2="12" y2="19"></line>
+        <polyline points="19 12 12 19 5 12"></polyline>
+      </svg>
+      <p>AŞAĞI KAYDIRIN</p>
+    </div>
 <!-- donations section -->
-
 <section id="donations">
   <div class="donations-wrapper">
     <H1 class="section-title animbaseoff anim03">YARDIMLARIMIZ <img class="section-image" src="{% static 'img/heart.png'%}" alt=""></H1>
       <div class="d-card shadow animbaseoff anim05" style="background: url('{% static 'img/banner2.png'%}')no-repeat center center;">
         <div class="card-content-wrapper text-center">
-        <h3>ÖĞRENCİ BURS YARDIMI</h3>
-        <button onclick="location.href='{% url "donation" 1 %}'" class="d-button">Bilgi Al</button>
+        
+        
         
       </div>
       </div>
       <div class="d-card shadow animbaseoff anim05" style="background: url('{% static 'img/banner1.png'%}')no-repeat center center;">
         <div class="card-content-wrapper text-center">
-        <h3>YETİM VE ÖKSÜZ YARDIMI</h3>
-        <button onclick="location.href='{% url "donation" 3 %}'" class="d-button">Bilgi Al</button>
+        
+        
       </div>
       </div>
       <div class="d-card shadow animbaseoff anim05" style="background: url('{% static 'img/banner3.jpg'%}')no-repeat center center;">
         <div class="card-content-wrapper text-center">
-        <h3>DEPREMZEDE YARDIMI</h3>
-        <button onclick="location.href='{% url "donation" 2 %}'" class="d-button">Bilgi Al</button>
+        
+       
       </div>
       </div>
       
   </div>
 </section>
 
+<!-- haberler duyurular section  -->
+
+<div class="outer-container">
+  <div class="content-container">
+      <!-- Sol bölüm -->
+      <div class="left-section">
+          <!-- Ana haber kapsayıcı -->
+          
+          <div class="main-news-container">
+            {% for haber in ana_haber %}
+              <div class="main-news">
+                <a href="{% url "new"  haber.id %}">
+                  <img src="{{ haber.Resim }}" alt="Altındağ İşçileri">
+                </a>
+                  <div class="main-news-content">
+                      <h1>{{ haber.Baslik}}</h1>
+                      <p>{{ haber.Aciklama}}</p>
+                  </div>
+              </div>
+              {% endfor %}
+          </div>
+          
+          
+           <!-- Alt haberler bölümü -->
+           <div class="featured-news">
+              {% for haber in alt_haberler %}
+              
+              
+                <div class="news-item">
+                    <a href="{% url "new"  haber.id %}"><h3>{{ haber.Baslik}}</h3></a>
+                </div>
+            
+            {% endfor %}
+            
+          </div>
+          
+      </div>
+      
+      <!-- Sağ bölüm -->
+      <div class="right-section">
+          <!-- Duyurular bölümü -->
+          <div class="announcements-outer">
+              <div class="announcements-header">
+                  <h2>D U Y U R U L A R</h2>
+              </div>
+              
+              <div class="announcements-container">
+                {% for a in duyurular %}
+                
+                  <div class="announcement-item">
+                    <div class="announcement-title">
+                        <div class="announcement-icon"><i class="fa-solid fa-scroll"></i></div>
+                        <a  href="{% url 'duyuru'  pk=a.pk %}"> {{ a.Baslik}} </a>
+                        
+                    </div>
+                    <div class="announcement-date">{{ a.date }}</div>
+                </div>
+              
+                {% endfor %}
+                  
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+<!-- info section  -->
+<div class="projectspreview">
+  <div class="projectlist">
+      <div class="project-slider swiper">
+          <div class="swiper-wrapper">
+              <!-- Slider görselleri -->
+      <div class="swiper-slide">
+                      <img src="https://yeni.altindag.bel.tr/sx.web.docs/altindag/gallery/altindag-da-ekipler-kar-mesaisinde/ALTINDAG-DA-EKIPLER-KAR-MESAISINDE-1-.jpg" alt="Project 3">
+                  </div>
+                  <div class="swiper-slide">
+                      <img src="https://yeni.altindag.bel.tr/sx.web.docs/altindag/gallery/altindag-da-ekipler-kar-mesaisinde/ALTINDAG-DA-EKIPLER-KAR-MESAISINDE-10-.jpg" alt="Project 1">
+                  </div>
+                  <div class="swiper-slide">
+                      <img src="https://yeni.altindag.bel.tr/sx.web.docs/altindag/gallery/altindag-da-ekipler-kar-mesaisinde/ALTINDAG-DA-EKIPLER-KAR-MESAISINDE-4-.jpg" alt="Project 2">
+                  </div>
+                  <div class="swiper-slide">
+                      <img src="https://yeni.altindag.bel.tr/sx.web.docs/altindag/gallery/altindag-da-ekipler-kar-mesaisinde/ALTINDAG-DA-EKIPLER-KAR-MESAISINDE-5-.jpg" alt="Project 3">
+                  </div>
+                  <!-- Daha fazla görsel ekleyebilirsiniz -->
+          </div>
+          <div class="homeslider_0"></div>
+         <span class="swiper-notification" aria-live="assertive" aria-atomic="true"></span>
+      </div>
+  </div>
+  <div class="baskan-part">
+      <div class="baskan-part-body">
+          <p>
+              <br>
+          </p>
+      </div>
+      <div class="baskan-part-topleft">
+          "Dr. Veysel Tiryaki"
+          <div class="font-sm">Altındağ Belediye Başkanı</div>
+      </div>
+      <div class="baskan-part-buttons">
+          <div class="button">
+              <a href="#!baskan">ÖZGEÇMİŞ</a>
+          </div>
+      </div>
+      <div class="baskan-part-bg"></div>
+      <div class="baskan-part-logo"></div>
+      
+  </div>
+</div>
 <!-- info section  -->
 
-<section id="info">
-  <div class="info-wrapper">
-    <div class="section-left">
-    <H1 class="section-title-left animbaseoff anim03">BİZ KİMİZ?</H1>
-      <p class="section-text-left animbaseoff anim05">{{ whoWeR.biz_kimiz }}</p>
-      <div class="socials">   
-        <a class="social-1 animbaseoff anim05" href="#"><i class="fab fa-facebook" aria-hidden="true"></i></a>
-        <a class="social-2 animbaseoff anim05" href="#"><i class="fab fa-twitter" aria-hidden="true"></i></a>
-       
-        <a class="social-3 animbaseoff anim05" href="#"><i class="fab fa-instagram" aria-hidden="true"></i></a>
-      </div>
-    </div>
-  <div class="section-right animbaseoff anim05">
-    <div class="sr-wrapper">
-      <div class="pic-ctn ">
-        <img src="{% static 'img/emresahin.jpg' %}" alt="" class="pic">
-        <img src="{% static 'img/Fatmasahin.jpg' %}" alt="" class="pic">
-        <img src="{% static 'img/emresahin.jpg' %}" alt="" class="pic">
-        <img src="{% static 'img/Fatmasahin.jpg' %}" alt="" class="pic">
-        <img src="{% static 'img/emresahin.jpg' %}" alt="" class="pic">
-      </div>
-  </div>
-  </div>
-  </div>
-</section>
+
 
 <!-- news section -->
 
@@ -182,69 +1101,20 @@
 
   <div class="swiper asd">
    
-  <div class="swiper-wrapper">
+  <div class="swiper-wrapper " >
     {% for activity in activities %}
-    <div class="news-card swiper-slide shadow shadow-sm ">
+    <div style=" height: 500px !important;" class="news-card swiper-slide shadow shadow-sm ">
       <div class="card-top">
         <img class="card-img" src="{{activity.Resim}}" alt="">
       </div>
       <div class="card-bottom text-center">
         <h3 class="card-title">{{ activity.Baslik }}</h3>
         <p class="card-text">{{ activity.Aciklama }}</p>
-        <button onclick="location.href='{% url "new" 1 %}'" class="news-button">Devamını oku...</button>
+        <button style="position: absolute; bottom: 20px; left: 50%;    transform: translateX(-50%);" onclick="location.href='{% url "new"  activity.id %}'" class="news-button">Devamını oku...</button>
       </div>
     </div>
     {% endfor %}
-    <div class="news-card swiper-slide shadow shadow-sm ">
-      <div class="card-top">
-        <img class="card-img" src="{% static 'img/new2.jpg'%}" alt="">
-      </div>
-      <div class="card-bottom text-center">
-        <h3 class="card-title">Lorem ipsum dolor sit.</h3>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, debitis...</p>
-        <button class="news-button">Devamını oku...</button>
-      </div>
-    </div>
-    <div class="news-card swiper-slide shadow shadow-sm ">
-      <div class="card-top">
-        <img class="card-img" src="{% static 'img/new3.jpg'%}" alt="">
-      </div>
-      <div class="card-bottom text-center">
-        <h3 class="card-title">Lorem ipsum dolor sit.</h3>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, debitis...</p>
-        <button class="news-button">Devamını oku...</button>
-      </div>
-    </div>
-    <div class="news-card swiper-slide shadow shadow-sm ">
-      <div class="card-top">
-        <img class="card-img" src="{% static 'img/new1.jpg'%}" alt="">
-      </div>
-      <div class="card-bottom text-center">
-        <h3 class="card-title">Lorem ipsum dolor sit.</h3>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, debitis...</p>
-        <button class="news-button">Devamını oku...</button>
-      </div>
-    </div>
-    <div class="news-card swiper-slide shadow shadow-sm ">
-      <div class="card-top">
-        <img class="card-img" src="{% static 'img/new2.jpg'%}" alt="">
-      </div>
-      <div class="card-bottom text-center">
-        <h3 class="card-title">Lorem ipsum dolor sit.</h3>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, debitis...</p>
-        <button class="news-button">Devamını oku...</button>
-      </div>
-    </div>
-    <div class="news-card swiper-slide shadow shadow-sm ">
-      <div class="card-top">
-        <img class="card-img" src="{% static 'img/new3.jpg'%}" alt="">
-      </div>
-      <div class="card-bottom text-center">
-        <h3 class="card-title">Lorem ipsum dolor sit.</h3>
-        <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat, debitis...</p>
-        <button class="news-button">Devamını oku...</button>
-      </div>
-    </div>
+    
   </div>
 
 
@@ -268,6 +1138,33 @@
 
 <script src="{% static 'js/swiper-bundle.min.js'%}"></script>
 <script src="{% static 'js/home.js'%}"></script>
+
+
+
+<!-- Info Section Swiper JS -->
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+<script>
+
+  window.onload = function() {
+    
+    document.getElementById('popup-box').classList.remove('is-hide');
+ 
+  }
+ 
+    // Swiper slider'ı başlatmak
+    var swiper = new Swiper('.project-slider', {
+        slidesPerView: 1,   // Bir seferde bir görsel gösterilir
+        spaceBetween: 10,    // Görseller arasında boşluk
+        loop: true,          // Döngü
+        autoplay: {
+            delay: 3000,     // 3 saniye arayla geçiş yapar
+            disableOnInteraction: false,  // Kullanıcı etkileşimi olsa da geçiş devam eder
+        },
+        pagination: false,   // Sayfalama devre dışı
+        navigation: false,   // Navigasyon okları devre dışı
+    });
+</script>
 {% endblock %}
 
 

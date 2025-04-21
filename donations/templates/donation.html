@@ -4,27 +4,186 @@
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/donation.css'%}">
 <link rel="stylesheet" href="{% static 'css/donations.css'%}">
+
+<style>
+/* Ana Bölüm */
+.donation-section {
+ font-family: 'Segoe UI', sans-serif;
+    
+  max-width: 960px;
+  margin: 0 auto;
+  text-align: center;
+  margin-top: 180px;
+  margin-bottom: 30px;
+}
+
+.donation-section h1 {
+  font-size: 36px;
+  margin-bottom: 10px;
+  color: #d72638;
+}
+
+.description {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+/* Kart Konteyneri */
+.card-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  
+}
+
+/* Kartlar */
+.card {
+  background: #fff;
+  width: 360px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+}
+
+/* Kart Başlığı */
+.card-header {
+  background: #e9e9e9;
+  padding: 15px;
+  border-top-left-radius: 12px;
+  border-top-right-radius: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+/* Bankaya Özel Vurgu Renkleri */
+.ziraat .card-header {
+  border-left: 4px solid #d72638;
+}
+
+.vakif .card-header {
+  border-left: 4px solid #ffb400;
+}
+
+.isbank .card-header {
+  border-left: 4px solid #005baa;
+}
+
+/* Kart Gövdesi */
+.card-body {
+  padding: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+
+/* IBAN input alanı: Tam genişlikte, tüm numara görünür */
+.card-body input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  text-align: center;
+  background: #fafafa;
+  color: #333;
+}
+
+.card-body button {
+  background: #0077b5;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #fff;
+  transition: background 0.2s ease;
+}
+
+.vakif .card-body button {
+  background: #ff9800;
+}
+
+.isbank .card-body button {
+  background: #005baa;
+}
+
+.card-body button:hover {
+  background: #005f8e;
+}
+
+/* Hesap Sahibi Bilgisi */
+.account-owner {
+  font-size: 14px;
+  color: #777;
+  margin-bottom: 15px;
+  padding: 0 20px 15px;
+  text-align: left;
+}
+</style>
+
+
 {% endblock %}
 
 {% block body %}
 
 
-<section id="donation">
-    <div class="donation-wrapper">
-        
-        <div class="donation-card shadow animbase anim05">
-            <div class="card-top">
-                <img src="../{{donation.Resim}}" alt="">
-            </div>
-           
-        </div>
 
-        <div class="donation">
-            <h3 class="donation-title-long animbase anim03">{{donation.Baslik}}</h3>
-            <p class="donation-exp animbase anim05">{{donation.Aciklama}}</p>
-            <h3 class="donation-price animbase anim05">{{donation.Fiyat}}₺</h3> 
-                <button class="donation-btn animbase anim05">Bağış Yap <i class="fa-solid fa-heart"></i></button>
+
+<section class="donation-section">
+    <h1><i class="fas fa-heart"></i> Bağış Yapın</h1>
+    <p class="description">Aşağıdaki hesaplardan güvenle bağış yapabilirsiniz.</p>
+    
+    <div class="card-container">
+      <!-- Ziraat Bankası Kartı -->
+      <div class="card ziraat">
+        <div class="card-header">
+          <i class="fas fa-university"></i>
+          <span>Ziraat Bankası</span>
         </div>
+        <div class="card-body">
+          <input id="iban1" type="text" readonly value="TR12 0001 0000 1234 5678 0000 01" />
+          <button onclick="copyIBAN('iban1')" title="Kopyala"><i class="fas fa-copy"></i></button>
+        </div>
+        <p class="account-owner"><strong>Hesap Sahibi:</strong> Yardım Vakfı</p>
+      </div>
+      
+      <!-- VakıfBank Kartı -->
+      <div class="card vakif">
+        <div class="card-header">
+          <i class="fas fa-university"></i>
+          <span>VakıfBank</span>
+        </div>
+        <div class="card-body">
+          <input id="iban2" type="text" readonly value="TR34 0001 5000 1234 5678 0000 02" />
+          <button onclick="copyIBAN('iban2')" title="Kopyala"><i class="fas fa-copy"></i></button>
+        </div>
+        <p class="account-owner"><strong>Hesap Sahibi:</strong> Yardım Vakfı</p>
+      </div>
+      
+      <!-- İş Bankası Kartı -->
+      <div class="card isbank">
+        <div class="card-header">
+          <i class="fas fa-university"></i>
+          <span>İş Bankası</span>
+        </div>
+        <div class="card-body">
+          <input id="iban3" type="text" readonly value="TR56 0006 2000 1234 5678 0000 03" />
+          <button onclick="copyIBAN('iban3')" title="Kopyala"><i class="fas fa-copy"></i></button>
+        </div>
+        <p class="account-owner"><strong>Hesap Sahibi:</strong> Yardım Vakfı</p>
+      </div>
     </div>
-</section>
+  </section>
+
+
 {% endblock %}

@@ -3,51 +3,139 @@
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/hakkimizda.css'%}">
+
+<style>
+
+
+
+.hero-section {
+  background-image: url('https://cdn.pixabay.com/photo/2021/01/29/17/24/hand-5961660_1280.jpg');
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  color: white;
+  text-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+  margin-top: 180px;
+  margin-bottom: 30px;
+}
+
+/* Karanlık filtre ekleyerek yazıyı daha okunur hale getiriyoruz */
+.hero-section::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+
+.hero-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.hero-content h1 {
+  font-size: 42px;
+  margin-bottom: 10px;
+}
+
+.hero-content p {
+  font-size: 16px;
+  font-weight: 300;
+  color: #ffd863;
+}
+
+.container {
+ 
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.belge-listesi {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.belge-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f9f9;
+  padding: 14px 20px;
+  margin-bottom: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.belge-item span {
+  font-weight: bold;
+}
+
+.indir-button {
+  background-color: #084687;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.indir-button:hover {
+  background-color: #0a5fa3;
+}
+
+
+</style>
+
 {% endblock %}
 
 {% block body %}
 
-<section id="info">
-    <div class="info-wrapper">
-        
-        <div class="accordion" id="accordionExample">
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    BAĞIŞ POLİTİKASI
-                </button>
-              </h2>
-              <div id="collapseOne" class="accordion-collapse collapse " data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                  <a href="">Bağış politikasını indirmek için tıklayınız</a>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    BURS YÖNETMELİĞİ
-                </button>
-              </h2>
-              <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <a href="">Burs yönetmeliğini indirmek için tıklayınız</a>
-                </div>
-              </div>
-            </div>
-            <div class="accordion-item">
-              <h2 class="accordion-header">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    BURS TALEP FORMU
-                </button>
-              </h2>
-              <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                <div class="accordion-body">
-                    <a href="">Eğitim burs talep formu için tıklayınız</a>
-                </div>
-              </div>
-            </div>
-          </div>
-    </div>
+<!-- Hero / Başlık Bölümü -->
+<section class="hero-section">
+  <div class="hero-content">
+    <h1>Belgelerimiz</h1>
+    <p><strong>TGGV</strong> / Belgelerimiz</p>
+  </div>
 </section>
+
+<!-- Belgeler Listesi -->
+<div class="container">
+  <ul class="belge-listesi">
+    <li class="belge-item">
+      <span>İZOTÜP TDS HFO</span>
+      <a href="{% static 'belgeler/person2.png' %}" class="indir-button" download>İNDİR</a>
+    </li>
+    <li class="belge-item">
+      <span>İZOTÜP MSDS -HFO (Component B)</span>
+      <a href="#" class="indir-button">İNDİR</a>
+    </li>
+    <li class="belge-item">
+      <span>İZOTÜP MSDS -HFO (Component A)</span>
+      <a href="#" class="indir-button">İNDİR</a>
+    </li>
+    <li class="belge-item">
+      <span>TS EN 14315-1 BELGESİ</span>
+      <a href="#" class="indir-button">İNDİR</a>
+    </li>
+    <li class="belge-item">
+      <span>CE BELGESİ</span>
+      <a href="#" class="indir-button">İNDİR</a>
+    </li>
+  </ul>
+</div>
+
+
+
 {% endblock %}

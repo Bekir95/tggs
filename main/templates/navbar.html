@@ -2,7 +2,7 @@
 <nav id="nav" class="shadow shadow-sm fixed-top">
     <div class="nav-content">
         <div class="nav-logo-wrapper">
-            <img id="nav-logo" src="{% static 'img/tuggev-logo2.png' %}" alt="">
+            <img id="nav-logo" src="{% static 'img/tuggev-logo3.png' %}" alt="">
             <!-- <h3 class="nav-logo-text">TÜGGEV</h3> -->
         </div>
         <div class="nav-links-wrapper">
@@ -10,20 +10,25 @@
             <a class="nav-link" href="{% url 'home' %}">Anasayfa</a>
         </div>
             <div class="nav-link-wrapper">
-            <a class="nav-link" href="{% url 'news' %}">Faaliyetler</i>
-                
+            <a class="nav-link" href="{% url 'news' %}">Faaliyetler<i class="fa-solid fa-angle-down"></i>         
             </a>
+            <ul class="nav-dropdown-links shadow">
+                <li onclick="location.href='{% url 'news' %}'" class="nav-dropdown-link hover-underline-animation">Haberler</li>
+                <li onclick="location.href='{% url 'duyurular' %}'" class="nav-dropdown-link hover-underline-animation">Duyurular</li>
+                
+            </ul>
         </div>
             <div class="nav-link-wrapper">
             <a class="nav-link nav-dropdown" href="{% url 'company' %}">Kurumsal<i class="fa-solid fa-angle-down"></i>
             </a>
             <ul class="nav-dropdown-links shadow">
+                <li onclick="location.href='{% url 'organization-tree' %}'" class="nav-dropdown-link hover-underline-animation">İdari Yapı</li>
                 <li onclick="location.href='{% url 'yonetim-kurulu' %}'" class="nav-dropdown-link hover-underline-animation">Yönetim Kurulumuz</li>
                 <li onclick="location.href='{% url 'il-baskanliklari'%}'" class="nav-dropdown-link hover-underline-animation">İl Başkanlıklarımız</li>
                 <li onclick="location.href='{% url 'insan-kaynaklari'%}'" class="nav-dropdown-link hover-underline-animation">İnsan Kaynakları</li>
                 <li onclick="location.href='{% url 'hakkimizda'%}'" class="nav-dropdown-link hover-underline-animation">Hakkımızda</li>
                 <li onclick="location.href='{% url 'pltk'%}'" class="nav-dropdown-link hover-underline-animation">Bağış Politikamız</li>
-                <li class="nav-dropdown-link hover-underline-animation">Gizlilik Politikamız</li>
+                
             </ul>
         </div>
 
@@ -31,11 +36,8 @@
             <a class="nav-link nav-dropdown" href="{% url 'donations' %}">Yardımlarımız<i class="fa-solid fa-angle-down"></i>
             </a>
             <ul class="nav-dropdown-links shadow">
-                <li onclick="location.href='{% url "donation" 1 %}'" class="nav-dropdown-link hover-underline-animation">ÖĞRENCİ BURS YARDIMI</li>
-                <li onclick="location.href='{% url "donation" 3 %}'" class="nav-dropdown-link hover-underline-animation">YETİM VE ÖKSÜZ YARDIMI</li>
-                <li onclick="location.href='{% url "donation" 2 %}'" class="nav-dropdown-link hover-underline-animation">DEPREMZEDE YARDIMI</li>
-                <li onclick="location.href='{% url "donation" 4 %}'" class="nav-dropdown-link hover-underline-animation">KURBAN YARDIMI</li>
-                <li class="nav-dropdown-link hover-underline-animation">ENGELLİ YARDIMI</li>
+                <li onclick="location.href='{% url "donation-news" %}'" class="nav-dropdown-link hover-underline-animation">Yapılan Yardımlar</li>
+                <li onclick="location.href='{% url "donation" 1 %}'" class="nav-dropdown-link hover-underline-animation">Katkı Sağlayın</li>
             </ul>
         </div>
             <div class="nav-link-wrapper">
@@ -46,7 +48,7 @@
         <i href="#" class="fa-solid fa-bars" id="menu-bars"></i>
         <div class="nav-end-wrapper">
                 
-                <button onclick="location.href='{% url "donations"  %}'" class="nav-button">Bağış Yap</button>
+                <button onclick="location.href='{% url "donation" 1 %}'" class="nav-button">Bağış Yap</button>
               
         </div>
     </div>

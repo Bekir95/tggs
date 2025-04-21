@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/news.css'%}">
+{% endblock %}
+
+
+{% block body %}
+
+<section id="news">
+    
+    <div class="news-wrapper">
+        <H1 class="section-title animbase anim03">DUYURULAR</H1>
+        {% for new in news %}
+        <div class="news-card shadow shadow-sm animbase anim05">
+            <div class="card-top">
+              <img class="card-img" src="{{ new.Resim }}" alt="">
+              
+            </div>
+            <div class="card-bottom text-center">
+              <h3 class="card-title">{{ new.Baslik|truncatechars:25}}</h3>
+              <p class="card-text">{{new.Aciklama|truncatechars:50}}</p>
+              <button onclick="location.href='{% url "duyuru" new.id %}'" class="news-button">Devamını oku...</button>
+
+            </div>
+          </div>
+          {% endfor %}
+          
+        
+    </div>
+</section>
+
+{% endblock %}

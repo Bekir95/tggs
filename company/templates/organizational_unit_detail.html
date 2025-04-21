@@ -1,0 +1,165 @@
+
+{% extends 'base.html'%}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/yk.css' %}">
+
+<style>
+
+.sub-unit {
+    margin: auto;
+    margin-top: 30px;
+    width: 80%;
+    
+}
+
+.sub-unit h3 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.sub-unit-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+    display: flex;
+            flex-wrap: wrap; /* Öğelerin sarmasına izin ver */
+            justify-content: center; /* Öğeleri yatayda ortala */
+            align-items: flex-end; /* Öğeleri alt kısma hizala */
+            gap: 10px; /* Öğeler arasındaki boşluk */
+            width: 100%; /* Tam genişlik */
+            height: 200px; /* Container yüksekliği */
+            
+           
+}
+
+.sub-unit-card {
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    
+    width: 30%; /* Öğelerin genişliği %30 */
+            height: auto; /* Öğelerin yüksekliği */
+ 
+            color: white;
+            text-align: center;
+            line-height: 100px; /* Ortaya hizalanmış metin */
+            border-radius: 5px; /* Kenarları yuvarla */
+           
+}
+
+.sub-unit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sub-unit-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.sub-unit-info {
+    padding: auto;
+}
+
+.sub-unit-name {
+    font-size: 14px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.sub-unit-description {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.sub-unit-card:hover .sub-unit-name {
+    color: #0056b3;
+}
+
+    
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+<section id="yk">
+    <div class="yk-wrapper">
+        <h2 class="section-title">{{ unit.name }}</h2>
+        <p><strong>Üst Birim:</strong> {% if unit.parent %}{{ unit.parent.name }}{% else %}Yok{% endif %}</p>
+
+        <div class="managers">
+    
+            <div class="managerh">
+                <div class="manager-img-wrapper">
+                    <img class="manager-img" src="{% static 'img/emresahin.jpg'%}" alt="">
+                </div>
+
+                <h1 class="manager-name">Emre Şahin</h3>
+                <h3 class="manager-title">Genel Başkan</h3>
+            </div>
+            {% if unit.people.all %}
+                {% for person in unit.people.all %}
+                    <div class="manager">
+                        <div class="manager-img-wrapper">
+                            <img class="manager-img" src="{% static 'img/person2.png'%}" alt="">
+                        </div>
+    
+                        <h1 class="manager-name">{{ person.full_name }}</h3>
+                        <h3 class="manager-title">{% if person.title %} - {{ person.title }}{% endif %}</h3>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Bu birimde çalışan kimse yok.</p>
+            {% endif %}
+
+        </div>
+
+        {% if sub_units %}
+                <div class="sub-unit">
+                    <div class="sub-unit-cards">
+                        {% for sub_unit in sub_units %}
+                            <div class="sub-unit-card">
+                                <a href="{% url 'organizational_unit_detail' sub_unit.id %}" class="sub-unit-link">
+                                    <div class="sub-unit-info">
+                                        <h4 class="sub-unit-name">{{ sub_unit.name }}</h4>
+                                        
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+
+                
+            {% endif %}
+
+        
+    </div>
+</section>
+
+{% endblock %}
+
+
+
+
+<div class="unit-detail">
+    <h2>{{ unit.name }}</h2>
+    <p><strong>Üst Birim:</strong> {% if unit.parent %}{{ unit.parent.name }}{% else %}Yok{% endif %}</p>
+
+    
+
+    
+</div>

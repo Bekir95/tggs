@@ -1,0 +1,144 @@
+{% extends 'base.html'%}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/yk.css' %}">
+
+<style>
+
+.sub-unit {
+    margin-top: 30px;
+}
+
+.sub-unit h3 {
+    font-size: 14px;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+.sub-unit-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.sub-unit-card {
+    width: 250px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    left: 50%;
+    bottom: -100px;
+}
+
+.sub-unit-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.sub-unit-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.sub-unit-info {
+    padding: 2px;
+}
+
+.sub-unit-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+.sub-unit-description {
+    font-size: 14px;
+    color: #555;
+    margin-top: 10px;
+}
+
+.sub-unit-card:hover .sub-unit-name {
+    color: #0056b3;
+}
+
+    
+</style>
+
+{% endblock %}
+
+{% block body %}
+
+<section id="yk">
+    <div class="yk-wrapper">
+        <h2 class="section-title">MÜTEVELLİ HEYETİ</h2>
+        <div class="managers">
+    
+            <div class="managerh">
+                <div class="manager-img-wrapper">
+                    <img class="manager-img" src="{% static 'img/emresahin.jpg'%}" alt="">
+                </div>
+
+                <h1 class="manager-name">Emre Şahin</h1>
+                <h3 class="manager-title">Genel Başkan</h3>
+            </div>
+            {% for data in units_data %}
+                {% if data.unit.name == "Mutevelli Heyeti" and data.people %}
+                    
+                    {% for person in data.people %}
+                        <div class="manager">
+                            <div class="manager-img-wrapper">
+                                <img class="manager-img" src="{% static 'img/person2.png'%}" alt="">
+                            </div>
+
+                            <h1 class="manager-name">{{ person.full_name }}</h3>
+                            <h3 class="manager-title">{% if person.title %} - {{ person.title }}{% endif %}</h3>
+                        </div>
+                       
+                    {% endfor %}
+                    
+                {% endif %}
+
+            {% endfor %}
+        
+            
+        </div>
+        {% for data in units_data %}
+                
+
+            {% if data.sub_units %}
+                <div class="sub-unit">
+                    <div class="sub-unit-cards">
+                        {% for sub_unit in data.sub_units %}
+                            <div class="sub-unit-card">
+                                <a href="{% url 'organizational_unit_detail' sub_unit.id %}" class="sub-unit-link">
+                                    <div class="sub-unit-info">
+                                        <h4 class="sub-unit-name">{{ sub_unit.name }}</h4>
+                                        
+                                    </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            {% else %}
+
+                <div class="sub-unit">
+                    <h3>Alt Birimler:</h3>
+                    <p>Bu birimde alt birimler bulunmamaktadır.</p>
+                </div>
+            {% endif %}
+
+
+
+        {% endfor %}    
+    </div>
+</section>
+
+{% endblock %}

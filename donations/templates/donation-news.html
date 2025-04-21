@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load mask_filters %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/donation.css'%}">
+<link rel="stylesheet" href="{% static 'css/donations.css'%}">
+
+<style>
+.burs-container {
+  max-width: 1000px;
+  margin: 60px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 180px;
+}
+
+.burs-title {
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 28px;
+  color: #084687;
+}
+
+.burs-table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: white;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.burs-table th,
+.burs-table td {
+  padding: 12px 16px;
+  text-align: center;
+  border-bottom: 1px solid #ddd;
+}
+
+.burs-table th {
+  background-color: #084687;
+  color: white;
+  font-weight: 600;
+}
+
+.burs-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.pagination {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.pagination-links {
+  display: inline-block;
+}
+
+.pagination-links a {
+  margin: 0 6px;
+  padding: 8px 14px;
+  background-color: #084687;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background 0.3s;
+}
+
+.pagination-links a:hover {
+  background-color: #0b5a9f;
+}
+
+.pagination-links .current {
+  margin: 0 10px;
+  font-weight: bold;
+  color: #084687;
+}
+
+
+
+.export-button-container {
+  text-align: right;
+  margin-bottom: 20px;
+  margin-right: 150px;
+}
+
+.export-button {
+  display: inline-block;
+  padding: 10px 18px;
+  background-color: #084687;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  font-weight: 600;
+  transition: background 0.3s ease;
+}
+
+.export-button:hover {
+  background-color: #0b5a9f;
+}
+
+
+
+</style>
+{% endblock %}
+
+{% block body %}
+
+
+<div class="burs-container">
+    <h2 class="burs-title">Verilen Burslar</h2>
+  
+    <table class="burs-table">
+      <thead>
+        <tr>
+          <th>Tarih</th>
+          <th>TC</th>
+          <th>İsim Soyisim</th>
+          <th>Miktar (₺)</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for burs in page_obj %}
+          <tr>
+            <td>{{ burs.tarih }}</td>
+            <td>{{ burs.tc|mask_tc }}</td>
+            <td>{{ burs.isimsoyisim|mask_name }}</td>
+            <td>{{ burs.miktar }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="4">Kayıt bulunamadı.</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  
+    <div class="pagination">
+      {% if page_obj.has_other_pages %}
+        <div class="pagination-links">
+          {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; İlk</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Önceki</a>
+          {% endif %}
+  
+          <span class="current">
+            Sayfa {{ page_obj.number }} / {{ page_obj.paginator.num_pages }}
+          </span>
+  
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Sonraki</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Son &raquo;</a>
+          {% endif %}
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  
+
+  <div class="export-button-container">
+    <a href="{% url 'burs_excel_export' %}" class="export-button">Excel'e Aktar</a>
+  </div>
+
+
+{% endblock %}

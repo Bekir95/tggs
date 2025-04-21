@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/new.css'%}">
+<style>
+   * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      margin: 0;
+      
+      background-color: #f8fbfd;
+    }
+
+    .grid {
+
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+      width: 80%;
+      margin: 180px auto;
+      
+    }
+
+    .card {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background-color: #fff;
+      border: 1px solid #e5f1fb;
+      padding: 30px;
+      
+      transition: box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      box-shadow: 0 10px 20px rgba(0, 86, 150, 0.2);
+    }
+
+    .icon {
+      font-size: 50px;
+      color: #084687;
+      flex-shrink: 0;
+    }
+
+    .content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .title {
+      font-size: 20px;
+      color: #084687;
+      font-weight: 500;
+      margin-bottom: 6px;
+    }
+
+    .date {
+      font-size: 16px;
+      color: #333;
+    }
+    a   {
+        text-decoration: none;
+    }
+
+    @media (max-width: 768px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+ 
+</style>
+{% endblock %}
+
+
+{% block body%}
+<div class="grid">
+
+    
+    {% for new in news %}
+    <a href="{{ new.dosya.url }}" download>
+        <div class="card">
+            <i class="fa-solid fa-clipboard-list icon"></i>
+            <div class="content">
+              <div class="title">{{ new }} MECLİS GÜNDEMİ</div>
+              <div class="date">{{ new.tarih }}</div>
+            </div>
+          </div>
+    </a>
+    {% endfor %}
+    
+    
+  </div>
+{% endblock %}

@@ -13,70 +13,51 @@
 <section id="ib">
     <div class="ib-wrapper">
         <div class="ib-title-wrapper text-center">
-            <h1 class="ib-title">ANTALYA İL BAŞKANLIĞI</h1>
+            <h1 class="ib-title">{{ city }} İL BAŞKANLIĞI</h1>
             <hr class="w-50 mx-auto">
         </div>
 
-        <div class="ib-l-wrapper">
-            <div class="img-wrapper text-center">
-                <img class="img" src="{% static 'img/emresahin.jpg'%}" alt="">
-            </div>
-
-            <div class="bio text-center">
-                <h3 class="name">Emre Şahin - Il Baskani</h3>
-                <hr class="mx-auto w-50">
-                <p class="bio-text">
-                    24 Nisan 1994'te Elazığ'da doğdu. İlk öğrenimini Elazığ'da tamamladı. Lise eğitimini Diyarbakır İMKB Kayapınar Lisesinde tamamladıktan sonra 2019 Yılında Erciyes Üniversitesi Mühendislik Fakültesi İnşaat Mühendisliği Bölümünden mezun oldu. Yüksek lisans eğitimini Ahi Evran Üniversitesinde tamamlayan Sayın Şahin ayrıca sosyal, siyasal, ekonomik ve toplumsal alanlarda da çeşitli çalışmalar gerçekleştirmektedir. Akademik kariyerinin yanında ticari faaliyetler de gerçekleştiren Sayın Şahin , mesleki alanda yeterli donanıma sahip olduktan sonra Ankara ' da 2017 Yılında " PAFA Mimarlık ve Mühendislik Limited Şirketini '' kurdu ve ticari hayatını da burada sürdürmeye devam ettirmektedir. 15 Temmuz 2016 gecesi halkla bütünleşen Sayın Şahin, bireysel anlamda çalışmalara başladı. Milletin birlik ve beraberliğine, toplumun dirlik ve düzenine, vatanımızın bölünmez bütünlüğüne faydada bulunmak adına seferber olan Sayın Şahin, 2018 Yılında " Tüm Anadolu 15 Temmuz Şehit ve Gazi Aileleri Derneği ”nin temellerini attı. 2020 yılında ise " 15 TEMMUZ FEDERASYONU " 'nu kurdu. Yönetim kurulu ve üyeleriyle birlikte çeşitli projeler , etkinlikler , çalışmalar , ziyaretler ve çeşitli yardımlar da yapmaktadır. 15 Temmuz Federasyonu ' nun Genel Merkezi Ankara ' da olup Sayın Şahin faaliyetlerini ve çalışmalarına da Ankara ' da devam etmektedir.
-                </p>
-            </div>
-
-            <div class="logo-wrapper text-center">
-                <img src="{% static 'img/tuggev-banner.png'%}" alt="">
-            </div>
-        </div>
-
-        <div class="ib-m-wrapper">
-            <div class="manager text-center">
-                <div class="manager-img-wrapper text-center">
-                    <img class="manager-img" src="{% static 'img/person2.png'%}" alt="">
+        {% for person in kisiler %}
+                {% if person.Yonetici_Durumu == "Baskan" %}
+                <div class="ib-l-wrapper">
+                    <div class="img-wrapper text-center">
+                        <img class="img" src="{{ person.Yonetici_Resmi.url }}" alt="">
+                    </div>
+        
+                    <div class="bio text-center">
+                        <h3 class="name">{{ person.Yonetici_Ismi }} - {{ person.Yonetici_Sifati }}</h3>
+                        <hr class="mx-auto w-50">
+                        <p class="bio-text">
+                            {{ person.Yonetici_Biyografisi }}
+                        </p>
+                    </div>
+        
+                    <div class="logo-wrapper text-center">
+                        <img src="{% static 'img/tuggev-logo3.png'%}" alt="">
+                    </div>
                 </div>
-
-                <h1 class="manager-name">Ad Soyad</h3>
-                <h3 class="manager-title">Sifati</h3>
+                {% endif %}    
+        {% endfor %}
+            <div class="ib-m-wrapper">
+                {% for person in kisiler %}
+                    {% if person.Yonetici_Durumu != "Baskan" %}
+                    
+                        <div class="manager text-center">
+                            <div class="manager-img-wrapper text-center">
+                                <img class="manager-img" src="{{ person.Yonetici_Resmi.url }}" alt="">
+                            </div>
+            
+                            <h1 class="manager-name">{{ person.Yonetici_Ismi }} </h3>
+                            <h3 class="manager-title">{{ person.Yonetici_Sifati }}</h3>
+                        </div>
+                    {% endif %}    
+                {% endfor %}
             </div>
-            <div class="manager text-center">
-                <div class="manager-img-wrapper text-center">
-                    <img class="manager-img" src="{% static 'img/person2.png'%}" alt="">
-                </div>
+            
+        
+        
 
-                <h1 class="manager-name">Ad Soyad</h3>
-                <h3 class="manager-title">Sifati</h3>
-            </div>
-            <div class="manager text-center">
-                <div class="manager-img-wrapper text-center">
-                    <img class="manager-img" src="{% static 'img/person2.png'%}" alt="">
-                </div>
-
-                <h1 class="manager-name">Ad Soyad</h3>
-                <h3 class="manager-title">Sifati</h3>
-            </div>
-            <div class="manager text-center">
-                <div class="manager-img-wrapper text-center">
-                    <img class="manager-img" src="{% static 'img/person2.png'%}" alt="">
-                </div>
-
-                <h1 class="manager-name">Ad Soyad</h3>
-                <h3 class="manager-title">Sifati</h3>
-            </div>
-            <div class="manager text-center">
-                <div class="manager-img-wrapper text-center">
-                    <img class="manager-img" src="{% static 'img/person2.png'%}" alt="">
-                </div>
-
-                <h1 class="manager-name">Ad Soyad</h3>
-                <h3 class="manager-title">Sifati</h3>
-            </div>
-        </div>
+        
 
 
     </div>

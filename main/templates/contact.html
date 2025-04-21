@@ -12,6 +12,7 @@
         <div class="content">
         <h2 class="title text-center animbase anim03">Bizimle İletişime Geçin!</h2>
         <form class="form text-center animbase anim05" action="" method="post">
+            {% csrf_token %}
             <div class="input-wrapper">
                 <input class="inp-txt form-control" type="text" name="name" type="text" placeholder="Adınız" required>
             </div>

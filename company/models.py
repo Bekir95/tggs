@@ -2,14 +2,12 @@ from django.db import models
 
 class YonetimKurulu(models.Model):
     Ad = models.CharField(max_length=100 , null=True , blank=True)
-    Ad = models.CharField(max_length=100 , null=True , blank=True)
     Sifat = models.CharField(max_length=200 , null=True , blank=True)
     Resim = models.ImageField(upload_to='djangouploads/company')
     Yonetici_Durumu = models.CharField(max_length=50 ,choices=[('Baskan' , 'Baskan') , 
                                                                ('Diger' , 'Diger')] ,default='Diger' ,  null=True , blank=True)
 
 class InsanKaynaklari(models.Model):
-    Ad = models.CharField(max_length=100 , null=True , blank=True)
     Ad = models.CharField(max_length=100 , null=True , blank=True)
     Sifat = models.CharField(max_length=200 , null=True , blank=True)
     Resim = models.ImageField(upload_to='djangouploads/company')
@@ -48,3 +46,38 @@ class Ilce_Baskanligi(models.Model):
     Yonetici_Durumu = models.CharField(max_length=50 ,choices=[('Baskan' , 'Baskan') , 
                                                                ('Diger' , 'Diger')] ,default='Diger' ,  null=True , blank=True)
 
+class OrganizationalUnit(models.Model):
+    name = models.CharField("Birim Adı", max_length=255)
+    parent = models.ForeignKey(
+        'self',
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name='sub_units',
+        verbose_name="Üst Birim"
+    )
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = "Organizasyon Birimi"
+        verbose_name_plural = "Organizasyon Birimleri"
+
+
+class Person(models.Model):
+    full_name = models.CharField("Ad Soyad", max_length=255)
+    title = models.CharField("Unvan", max_length=255, blank=True)
+    unit = models.ForeignKey(
+        OrganizationalUnit,
+        on_delete=models.CASCADE,
+        related_name='people',
+        verbose_name="Bağlı Birim"
+    )
+
+    def __str__(self):
+        return f"{self.full_name} ({self.title})"
+
+    class Meta:
+        verbose_name = "Sorumlu Kişi"
+        verbose_name_plural = "Sorumlu Kişiler"

@@ -1,0 +1,156 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/new.css'%}">
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-top: 180px;
+    }
+    .calendar-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      align-items: center;
+      margin-bottom: 100px;
+    }
+    
+    .calendar {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 10px;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+      width: 100%;
+      max-width: 600px;
+    }
+    .calendar-header {
+      grid-column: span 7;
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 22px;
+      color: #444;
+    }
+    .day-name, .day {
+      text-align: center;
+      padding: 10px;
+      border-radius: 8px;
+    }
+    .day-name {
+      font-weight: bold;
+      background-color: #e9ecef;
+    }
+    .day {
+      min-height: 100px;
+      background-color: #fafafa;
+      border: 1px solid #ddd;
+      position: relative;
+    }
+    .day .date {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 14px;
+      color: #999;
+    }
+    .event {
+      margin-top: 25px;
+      font-size: 14px;
+      background-color: #1a66b8;
+      color: #fff;
+      padding: 5px 8px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+</style>
+{% endblock %}
+
+
+{% block body%}
+<h1>Etkinlik Takvimi</h1>
+  <div class="calendar-container" id="calendars"></div>
+
+  {# JSON içine gömülü etkinlik verileri #}
+  <script type="application/json" id="events-data">
+    {{ events_json|safe }}
+  </script>
+
+  <script>
+    const monthNames = ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'];
+    const dayNames = ['Pzt','Sal','Çar','Per','Cum','Cmt','Paz'];
+
+    // Template ile gömülmüş etkinlik verileri
+    const eventsByMonth = JSON.parse(document.getElementById('events-data').textContent);
+
+    function createCalendar(year, month) {
+      const cal = document.createElement('div');
+      cal.className = 'calendar';
+
+      // Başlık
+      const header = document.createElement('div');
+      header.className = 'calendar-header';
+      header.textContent = `${monthNames[month]} ${year}`;
+      cal.appendChild(header);
+
+      // Gün isimleri
+      dayNames.forEach(dn => {
+        const dnEl = document.createElement('div');
+        dnEl.className = 'day-name';
+        dnEl.textContent = dn;
+        cal.appendChild(dnEl);
+      });
+
+      // Ayın ilk günü pozisyonu
+      const firstDay = new Date(year, month, 1).getDay();
+      const offset = (firstDay + 6) % 7;
+      for (let i = 0; i < offset; i++) {
+        cal.appendChild(document.createElement('div')).className = 'day';
+      }
+
+      // Günleri ve etkinlikleri ekle
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const key = `${year}-${String(month+1).padStart(2,'0')}`;
+      for (let day = 1; day <= daysInMonth; day++) {
+        const dayEl = document.createElement('div');
+        dayEl.className = 'day';
+        dayEl.innerHTML = `<div class="date">${day}</div>`;
+
+        // Veritabanından gelen etkinlikler varsa ekle
+        if (eventsByMonth[key]) {
+          eventsByMonth[key]
+            .filter(ev => ev.day === day)
+            .forEach(ev => {
+              const evEl = document.createElement('div');
+              evEl.className = 'event';
+              evEl.textContent = ev.title;
+              dayEl.appendChild(evEl);
+            });
+        }
+
+        cal.appendChild(dayEl);
+      }
+
+      return cal;
+    }
+
+    // Mevcut ve bir sonraki ay
+    const today = new Date();
+    const cy = today.getFullYear(), cm = today.getMonth();
+    let ny = cy, nm = cm + 1;
+    if (nm > 11) { nm = 0; ny++; }
+
+    const container = document.getElementById('calendars');
+    container.appendChild(createCalendar(cy, cm));
+    container.appendChild(createCalendar(ny, nm));
+  </script>
+{% endblock %}
